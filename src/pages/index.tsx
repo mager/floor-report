@@ -1,17 +1,32 @@
-import * as React from 'react';
-import {Button} from 'baseui/button';
-import {useStyletron} from 'baseui';
+import type {NextPage} from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
 
-export const sum = (a: number, b: number) => a + b;
+import Header from '../components/Header';
 
-const Index: React.FC = () => {
-  const [css, theme] = useStyletron();
+const Home: NextPage = () => {
   return (
     <div>
-      <Button onClick={() => console.log('hey')}>Hello</Button>
-      <p className={css({color: theme.colors.accent600})}>Styled by hook</p>
+      <Head>
+        <title>Floor Report</title>
+        <meta
+          name="description"
+          content="Floor Report: NFT prices & analytics"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        <Header />
+        <h1>Floor Report</h1>
+        <p>Floor Report: NFT floor prices & analytics</p>
+      </main>
+
+      <footer>
+        <p>by @mager</p>
+      </footer>
     </div>
   );
 };
 
-export default Index;
+export default Home;
