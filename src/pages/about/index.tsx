@@ -3,8 +3,10 @@ import {styled} from 'baseui';
 import Head from 'next/head';
 import Image from 'next/image';
 import {Block} from 'baseui/block';
+import {HeadingXXLarge} from 'baseui/typography';
 
 import Header from '../../components/Header';
+import Text from '../../components/Text';
 
 const Container = styled(Block, ({$theme}) => ({
   margin: `${$theme.sizing.scale400} 0 0`,
@@ -14,11 +16,11 @@ const Container = styled(Block, ({$theme}) => ({
 const About: NextPage = () => {
   return (
     <Container>
-      <h1>About</h1>
-      <p>
+      <HeadingXXLarge>About</HeadingXXLarge>
+      <Text>
         Floor Report is a project by @mager to learn about web3. Consider
         everything experimental.
-      </p>
+      </Text>
     </Container>
   );
 };

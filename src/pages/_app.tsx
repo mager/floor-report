@@ -31,7 +31,7 @@ export default function MyApp({Component, pageProps}) {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Titillium+Web:wght@300;700&display=swap"
           rel="stylesheet"
         />
       </Head>

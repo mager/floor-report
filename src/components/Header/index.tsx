@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {useRouter} from 'next/router';
+
 import {withStyle} from 'baseui';
 import {AppNavBar, setItemActive} from 'baseui/app-nav-bar';
 import {Button} from 'baseui/button';
@@ -39,6 +40,11 @@ export default () => {
         MainMenuItem: {
           style: ({$theme}) => ({
             fontFamily: 'Coustard',
+          }),
+        },
+        Root: {
+          style: ({$theme}) => ({
+            marginLeft: '0 !important',
           }),
         },
       }}

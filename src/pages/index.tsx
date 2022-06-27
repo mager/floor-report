@@ -2,8 +2,10 @@ import type {NextPage} from 'next';
 import {styled} from 'baseui';
 import Image from 'next/image';
 import {Block} from 'baseui/block';
+import {HeadingXXLarge} from 'baseui/typography';
 
 import Container from '../components/Container';
+import Text from '../components/Text';
 
 const Footer = styled('footer', ({$theme}) => ({
   margin: `${$theme.sizing.scale400} 0 0`,
@@ -13,11 +15,11 @@ const Footer = styled('footer', ({$theme}) => ({
 const Home: NextPage = () => {
   return (
     <Container>
-      <h1>Floor Report</h1>
-      <p>Floor Report: NFT floor prices & analytics</p>
+      <HeadingXXLarge>Floor Report</HeadingXXLarge>
+      <Text>Floor Report: NFT floor prices & analytics</Text>
 
       <footer>
-        <p>by @mager</p>
+        <Text>by @mager</Text>
       </footer>
     </Container>
   );

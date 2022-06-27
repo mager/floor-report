@@ -59,26 +59,27 @@ const overrides = {
   typography: {
     // H1
     font1050: {
-      fontFamily: 'Georgia',
+      fontFamily: 'Coustard',
       lineHeight: '48px',
+      fontWeight: 'bold',
     },
     // H2
     font950: {
-      fontFamily: 'Georgia',
+      fontFamily: 'Coustard',
     },
     // H3
     font850: {
-      fontFamily: 'Georgia',
+      fontFamily: 'Coustard',
     },
     // H4
     font750: {
-      fontFamily: 'Georgia',
+      fontFamily: 'Coustard',
     },
     font1150: {
-      fontFamily: 'Georgia',
+      fontFamily: 'Coustard',
     },
     font1350: {
-      fontFamily: 'Georgia',
+      fontFamily: 'Coustard',
     },
   },
 };
