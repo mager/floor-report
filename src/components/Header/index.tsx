@@ -15,7 +15,7 @@ const AppName = withStyle(StyledLink, ({$theme}) => ({
   padding: `${$theme.sizing.scale800} 0`,
 }));
 
-export default () => {
+const Header = () => {
   const router = useRouter();
   const [mainItems, setMainItems] = React.useState([
     {icon: Show, label: 'About', info: {href: '/about'}},
@@ -51,3 +51,5 @@ export default () => {
     />
   );
 };
+
+export default Header;

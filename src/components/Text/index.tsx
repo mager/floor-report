@@ -1,12 +1,15 @@
 import React from 'react';
-import {ParagraphMedium} from 'baseui/typography';
+
 import {styled} from 'baseui';
+import {ParagraphMedium} from 'baseui/typography';
 
 const Paragraph = styled(ParagraphMedium, ({$theme}) => ({
   fontFamily: 'Titillium Web',
   fontSize: '16px',
 }));
 
-export default ({children}) => {
+const Text = ({children}) => {
   return <Paragraph>{children}</Paragraph>;
 };
+
+export default Text;

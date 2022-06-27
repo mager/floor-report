@@ -1,3 +1,4 @@
+import React from 'react';
 import type {NextPage} from 'next';
 import {styled} from 'baseui';
 import Image from 'next/image';
