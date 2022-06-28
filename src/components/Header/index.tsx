@@ -42,11 +42,6 @@ const Header = () => {
             fontFamily: 'Coustard',
           }),
         },
-        Root: {
-          style: ({$theme}) => ({
-            marginLeft: '0 !important',
-          }),
-        },
       }}
     />
   );

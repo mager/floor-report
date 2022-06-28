@@ -27,8 +27,8 @@ type CustomMediaQuery = {
 
 const breakpoints = {
   small: 320,
-  medium: 524,
-  large: 524,
+  medium: 640,
+  large: 1408,
 };
 const ResponsiveTheme = Object.keys(breakpoints).reduce(
   (acc, key) => {
@@ -56,6 +56,9 @@ const primitives = {
 };
 
 const overrides = {
+  colors: {
+    linkVisited: '#000',
+  },
   typography: {
     // H1
     font1050: {
