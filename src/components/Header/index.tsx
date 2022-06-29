@@ -19,6 +19,7 @@ const Header = () => {
   const router = useRouter();
   const [mainItems, setMainItems] = React.useState([
     {icon: Show, label: 'About', info: {href: '/about'}},
+    {icon: Show, label: 'Updates', info: {href: '/updates'}},
   ]);
 
   return (
@@ -31,7 +32,6 @@ const Header = () => {
         // @ts-ignore
         setMainItems((prev) => setItemActive(prev, item));
       }}
-      onUserItemSelect={(item) => console.log(item)}
       overrides={{
         AppName: {
           // @ts-ignore

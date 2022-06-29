@@ -1,8 +1,9 @@
 import React from 'react';
 import type {NextPage} from 'next';
-import {styled} from 'baseui';
 import Head from 'next/head';
 import Image from 'next/image';
+
+import {styled} from 'baseui';
 import {Block} from 'baseui/block';
 import {HeadingXXLarge} from 'baseui/typography';
 

@@ -1,8 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import {useTheme} from 'next-themes';
+
 import {Block} from 'baseui/block';
 import styles from './Footer.module.css';
+
+import {useTheme} from 'next-themes';
 
 const Footer = () => {
   const {resolvedTheme} = useTheme();

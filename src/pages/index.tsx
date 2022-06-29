@@ -18,7 +18,6 @@ const Home: NextPage = () => {
     <Container>
       <HeadingXXLarge>Floor Report</HeadingXXLarge>
       <Text>Floor Report: NFT floor prices & analytics</Text>
-
       <footer>
         <Text>by @mager</Text>
       </footer>
