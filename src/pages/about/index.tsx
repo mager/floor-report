@@ -6,13 +6,9 @@ import Image from 'next/image';
 import {Block} from 'baseui/block';
 import {HeadingXXLarge} from 'baseui/typography';
 
+import Container from '../../components/Container';
 import Header from '../../components/Header';
 import Text from '../../components/Text';
-
-const Container = styled(Block, ({$theme}) => ({
-  margin: `${$theme.sizing.scale400} 0 0`,
-  padding: `0 ${$theme.sizing.scale800}`,
-}));
 
 const About: NextPage = () => {
   return (

@@ -6,9 +6,13 @@ import {Block} from 'baseui/block';
 const Container = styled(Block, ({$theme}) => ({
   margin: 'auto',
   maxWidth: `${$theme.breakpoints.large - 1}px`,
-  [$theme.mediaQuery.small]: {
+  [$theme.mediaQuery.medium]: {
     maxWidth: 'auto',
     padding: `0 ${$theme.sizing.scale1600}`,
+  },
+  [$theme.mediaQuery.small]: {
+    maxWidth: 'auto',
+    padding: `0 ${$theme.sizing.scale800}`,
   },
 }));
 
