@@ -4,6 +4,7 @@ import Head from 'next/head';
 import {Provider as StyletronProvider} from 'styletron-react';
 import {LightTheme, BaseProvider} from 'baseui';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import '../styles/index.css';
 
 import Providers from './providers';
@@ -37,6 +38,7 @@ export default function MyApp({Component, pageProps}) {
       </Head>
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </Providers>
   );
 

@@ -19,6 +19,14 @@ const About: NextPage = () => {
       <HeadingXXLarge>Updates</HeadingXXLarge>
       <Text>Just a list of updates...</Text>
       <Block>
+        <HeadingMedium>2022-06-29</HeadingMedium>
+        <List>
+          <ListItem>
+            <Text>Sorted out the footer</Text>
+          </ListItem>
+        </List>
+      </Block>
+      <Block>
         <HeadingMedium>2022-06-27</HeadingMedium>
         <List>
           <ListItem>

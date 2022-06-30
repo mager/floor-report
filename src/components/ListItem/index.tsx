@@ -1,12 +1,12 @@
 import React from 'react';
 
 import {styled} from 'baseui';
-import {ListItem as ListItemComponent, ListItemLabel} from 'baseui/list';
+import {ListItemLabel} from 'baseui/list';
 
-const StyledListItem = styled(ListItemComponent, ({$theme}) => ({
+const StyledListItem = styled('li', ({$theme}) => ({
   padding: 0,
   margin: 0,
-  fontSize: '2.5rem',
+  listStyleType: 'none',
 }));
 
 const ListItem = ({children}) => {

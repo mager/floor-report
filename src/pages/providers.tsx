@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {createThemedStyled, ThemeProvider} from 'baseui';
 import useDarkMode from 'use-dark-mode';
+import {ThemeProvider as NextThemeProvider} from 'next-themes';
 
 import {createLightTheme, createDarkTheme} from 'baseui';
 import {Theme} from 'baseui/theme';
@@ -52,7 +53,7 @@ export type CustomThemeT = Theme & {
 export const themedStyled = createThemedStyled<CustomThemeT>();
 
 const primitives = {
-  primaryFontFamily: 'Open Sans',
+  primaryFontFamily: 'Titillium Web',
 };
 
 const overrides = {
@@ -109,7 +110,9 @@ const Providers = ({children}) => {
   }, []);
 
   const body = (
-    <ThemeProvider theme={theme as CustomThemeT}>{children}</ThemeProvider>
+    <ThemeProvider theme={theme as CustomThemeT}>
+      <NextThemeProvider>{children}</NextThemeProvider>
+    </ThemeProvider>
   );
 
   // Prevents SSR flash for mismatched dark mode
