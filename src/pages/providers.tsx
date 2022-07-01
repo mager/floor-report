@@ -58,7 +58,7 @@ const primitives = {
 
 const overrides = {
   colors: {
-    linkVisited: '#000',
+    linkVisited: '#333',
   },
   typography: {
     // H1
