@@ -2,9 +2,14 @@ import React, {useEffect, useState} from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import {Provider as StyletronProvider} from 'styletron-react';
+
+import {Block} from 'baseui/block';
 import {LightTheme, BaseProvider} from 'baseui';
-import Header from '../components/Header';
+
+import Body from '../components/Body';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Main from '../components/Main';
 import '../styles/index.css';
 
 import Providers from './providers';
@@ -36,9 +41,13 @@ export default function MyApp({Component, pageProps}) {
           rel="stylesheet"
         />
       </Head>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+      <Body>
+        <Header />
+        <Main>
+          <Component {...pageProps} />
+        </Main>
+        <Footer />
+      </Body>
     </Providers>
   );
 

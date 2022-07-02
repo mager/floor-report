@@ -3,18 +3,18 @@ import Image from 'next/image';
 
 import {styled} from 'baseui';
 import {Block} from 'baseui/block';
+import {StyledLink} from 'baseui/link';
 import {ParagraphMedium} from 'baseui/typography';
 import {useTheme} from 'next-themes';
 
-import Container from '../Container';
 import Text from '../Text';
 
 const Main = styled(Block, ({$theme}) => ({
   width: '100%',
+  background: $theme.colors.background,
+  margin: 'auto',
   textAlign: 'center',
-  position: 'fixed',
-  bottom: 0,
-  padding: `${$theme.sizing.scale800} 0`,
+  padding: `0 0 ${$theme.sizing.scale800}`,
 }));
 
 const Paragraph = styled(ParagraphMedium, ({$theme}) => ({
@@ -29,39 +29,37 @@ const Footer = () => {
 
   return (
     <Main>
-      <Container>
-        <Block>
-          <a
-            href="https://discord.gg/MqsRYeQWqa"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src={`/discord-${resolvedTheme}.svg`}
-              width="32"
-              height="32"
-              alt="Discord"
-            />
-          </a>
-          <a
-            href="https://twitter.com/floor_report"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src={`/twitter-${resolvedTheme}.svg`}
-              width="32"
-              height="32"
-              alt="Twitter"
-            />
-          </a>
-        </Block>
-        <Block>
-          <Paragraph>
-            by <a href="https://twitter.com/mager">@mager</a>
-          </Paragraph>
-        </Block>
-      </Container>
+      <Block>
+        <a
+          href="https://discord.gg/MqsRYeQWqa"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image
+            src={`/discord-${resolvedTheme}.svg`}
+            width="32"
+            height="32"
+            alt="Discord"
+          />
+        </a>
+        <a
+          href="https://twitter.com/floor_report"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image
+            src={`/twitter-${resolvedTheme}.svg`}
+            width="32"
+            height="32"
+            alt="Twitter"
+          />
+        </a>
+      </Block>
+      <Block>
+        <Paragraph>
+          by <StyledLink href="https://twitter.com/mager">@mager</StyledLink>
+        </Paragraph>
+      </Block>
     </Main>
   );
 };

@@ -8,11 +8,11 @@ const Container = styled(Block, ({$theme}) => ({
   maxWidth: `${$theme.breakpoints.large - 1}px`,
   [$theme.mediaQuery.medium]: {
     maxWidth: 'auto',
-    padding: `0 ${$theme.sizing.scale1600}`,
+    padding: `${$theme.sizing.scale1600}`,
   },
   [$theme.mediaQuery.small]: {
     maxWidth: 'auto',
-    padding: `0 ${$theme.sizing.scale800}`,
+    padding: `${$theme.sizing.scale800}`,
   },
 }));
 

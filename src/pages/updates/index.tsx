@@ -5,9 +5,11 @@ import Image from 'next/image';
 
 import {styled} from 'baseui';
 import {Block} from 'baseui/block';
-import {HeadingMedium, HeadingXXLarge} from 'baseui/typography';
+import {StyledLink} from 'baseui/link';
+import {HeadingMedium} from 'baseui/typography';
 
 import Container from '../../components/Container';
+import H1 from '../../components/H1';
 import Header from '../../components/Header';
 import List from '../../components/List';
 import ListItem from '../../components/ListItem';
@@ -16,22 +18,21 @@ import Text from '../../components/Text';
 const About: NextPage = () => {
   return (
     <Container>
-      <HeadingXXLarge>Updates</HeadingXXLarge>
+      <H1>Updates</H1>
       <Text>Just a list of updates...</Text>
       <Block>
-        <HeadingMedium>2022-06-29</HeadingMedium>
+        <HeadingMedium>Week of 2022-06-27</HeadingMedium>
         <List>
+          <ListItem>
+            <Text>Dark mode</Text>
+          </ListItem>
           <ListItem>
             <Text>Sorted out the footer</Text>
           </ListItem>
-        </List>
-      </Block>
-      <Block>
-        <HeadingMedium>2022-06-27</HeadingMedium>
-        <List>
           <ListItem>
             <Text>
-              Use <a href="https://baseweb.design/">Baseweb</a>
+              Use{' '}
+              <StyledLink href="https://baseweb.design/">Baseweb</StyledLink>
             </Text>
           </ListItem>
           <ListItem>

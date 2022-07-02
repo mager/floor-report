@@ -57,14 +57,10 @@ const primitives = {
 };
 
 const overrides = {
-  colors: {
-    linkVisited: '#333',
-  },
   typography: {
     // H1
     font1050: {
       fontFamily: 'Coustard',
-      lineHeight: '48px',
       fontWeight: 'bold',
     },
     // H2
