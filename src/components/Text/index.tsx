@@ -9,8 +9,8 @@ const Paragraph = styled(ParagraphMedium, ({$theme}) => ({
   marginBottom: 0,
 }));
 
-const Text = ({children}) => {
-  return <Paragraph>{children}</Paragraph>;
+const Text = ({children, ...props}) => {
+  return <Paragraph {...props}>{children}</Paragraph>;
 };
 
 export default Text;

@@ -1,15 +1,15 @@
 import React from 'react';
 
 import {styled} from 'baseui';
-import {HeadingXXLarge} from 'baseui/typography';
+import {HeadingMedium} from 'baseui/typography';
 
-const Component = styled(HeadingXXLarge, ({$theme}) => ({
+const Component = styled(HeadingMedium, ({$theme}) => ({
   letterSpacing: '-1px',
   marginTop: 0,
 }));
 
-const H1 = ({children, ...props}) => {
+const H4 = ({children, ...props}) => {
   return <Component {...props}>{children}</Component>;
 };
 
-export default H1;
+export default H4;

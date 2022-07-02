@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {styled} from 'baseui';
-import {Spinner} from 'baseui/spinner';
+import {withStyle} from 'baseui';
+import {StyledSpinnerNext} from 'baseui/spinner';
 
-const Component = styled(Spinner, ({$theme}) => ({
+const Component = withStyle(StyledSpinnerNext, ({$theme}) => ({
   width: $theme.sizing.scale4800,
   height: $theme.sizing.scale4800,
   margin: '0 auto',

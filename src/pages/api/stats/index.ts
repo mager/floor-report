@@ -2,7 +2,7 @@ import {NextApiRequest, NextApiResponse} from 'next';
 import {API_PATH, getHeaders} from '../../../utils';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const url = `${API_PATH}/stats`;
+  const url = `${API_PATH}/home`;
 
   try {
     const response = await fetch(url, {

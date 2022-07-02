@@ -8,6 +8,7 @@ import {Spinner} from 'baseui/spinner';
 import Container from '../components/Container';
 import H1 from '../components/H1';
 import Loading from '../components/Loading';
+import RandomNFT from '../components/RandomNFT';
 import Stats from '../components/Stats';
 import Text from '../components/Text';
 import {fetcher, swrOptions} from '../utils';
@@ -23,13 +24,14 @@ const Home: NextPage = () => {
     return <Loading />;
   }
 
-  const {total, updated} = data;
+  const {randomNFT, total, updated} = data;
 
   return (
     <Container>
       <H1>Floor Report</H1>
       <Text>Floor Report: NFT floor prices & analytics</Text>
       <Stats total={total} updated={updated} />
+      <RandomNFT nft={randomNFT} />
     </Container>
   );
 };
