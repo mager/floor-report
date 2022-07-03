@@ -5,7 +5,7 @@ import {HeadingSmall} from 'baseui/typography';
 
 const Component = styled(HeadingSmall, ({$theme}) => ({
   letterSpacing: '-1px',
-  marginTop: 0,
+  margin: 0,
 }));
 
 const H5 = ({children, ...props}) => {

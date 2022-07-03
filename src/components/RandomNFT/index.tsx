@@ -1,13 +1,10 @@
 import React from 'react';
-import TimeAgo from 'react-timeago';
 
-import {styled} from 'baseui';
+import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
-import {ParagraphMedium} from 'baseui/typography';
 
 import H5 from '../H5';
 import H6 from '../H6';
-import Text from '../Text';
 
 type Props = {
   nft: RandomNFT;
@@ -20,15 +17,34 @@ type RandomNFT = {
   owner: string;
 };
 
+const Container = styled(Block, ({$theme}) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  padding: `${$theme.sizing.scale1600} 0 0`,
+}));
+
+const Image = styled('img', ({$theme}) => ({
+  width: '100%',
+  [$theme.mediaQuery.medium]: {
+    width: '50%',
+  },
+}));
+
 const RandomNFT = ({nft}: Props) => {
+  const [css, theme] = useStyletron();
+  const {collection, imageUrl, name, owner} = nft;
+
   return (
     <Block>
-      <Block padding="20px 0">
-        <img src={nft.imageUrl} width="100%" />
-      </Block>
-      <H5 margin={0}>{nft.collection}</H5>
-      <H6 margin={0}>{nft.name}</H6>
-      <Text margin={0}>Owned by {nft.owner}</Text>
+      <Container>
+        <Image src={imageUrl} />
+        <H5>
+          {collection} - {name}
+        </H5>
+        <H6>Owned by {owner}</H6>
+      </Container>
     </Block>
   );
 };

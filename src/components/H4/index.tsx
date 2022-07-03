@@ -5,7 +5,7 @@ import {HeadingMedium} from 'baseui/typography';
 
 const Component = styled(HeadingMedium, ({$theme}) => ({
   letterSpacing: '-1px',
-  marginTop: 0,
+  margin: 0,
 }));
 
 const H4 = ({children, ...props}) => {

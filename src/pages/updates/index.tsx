@@ -24,6 +24,9 @@ const About: NextPage = () => {
         <HeadingMedium>Week of 2022-06-27</HeadingMedium>
         <List>
           <ListItem>
+            <Text>Random NFT on the homepage</Text>
+          </ListItem>
+          <ListItem>
             <Text>Dark mode</Text>
           </ListItem>
           <ListItem>
