@@ -1,22 +1,29 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
 
-import {styled} from 'baseui';
 import {Block} from 'baseui/block';
-import {ParagraphMedium} from 'baseui/typography';
 
 import Text from '../Text';
 
-type Props = {
-  total: number;
+type Stats = {
+  totalCollections: number;
+  totalUsers: number;
   updated: Date;
 };
 
-const Stats = ({total, updated}: Props) => {
+type Props = {
+  stats: Stats;
+};
+
+const Stats = ({stats}: Props) => {
+  console.log({stats});
+
+  const {totalCollections, totalUsers, updated} = stats;
   return (
     <Block>
       <Text>
-        Indexing {total} collections, updated <TimeAgo date={updated} />
+        Indexing {totalCollections} collections, from {totalUsers} users,
+        updated <TimeAgo date={updated} />
       </Text>
     </Block>
   );

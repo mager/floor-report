@@ -14,7 +14,7 @@ import Text from '../components/Text';
 import {fetcher, swrOptions} from '../utils';
 
 const Home: NextPage = () => {
-  const {data, error} = useSWR('/api/stats', fetcher, swrOptions);
+  const {data, error} = useSWR('/api/home', fetcher, swrOptions);
 
   if (error) {
     console.error(error);
@@ -24,13 +24,13 @@ const Home: NextPage = () => {
     return <Loading />;
   }
 
-  const {randomNFT, total, updated} = data;
+  const {randomNFT, stats} = data;
 
   return (
     <Container>
       <H1>Floor Report</H1>
       <Text>Floor Report: NFT floor prices & analytics</Text>
-      <Stats total={total} updated={updated} />
+      <Stats stats={stats} />
       <RandomNFT nft={randomNFT} />
     </Container>
   );

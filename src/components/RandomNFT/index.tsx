@@ -22,11 +22,12 @@ const Container = styled(Block, ({$theme}) => ({
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
-  padding: `${$theme.sizing.scale1600} 0 0`,
+  padding: `${$theme.sizing.scale800} 0`,
 }));
 
 const Image = styled('img', ({$theme}) => ({
   width: '100%',
+  padding: `0 0 ${$theme.sizing.scale400}`,
   [$theme.mediaQuery.medium]: {
     width: '50%',
   },
