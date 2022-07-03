@@ -2,8 +2,7 @@ import React from 'react';
 import type {NextPage} from 'next';
 import useSWR from 'swr';
 
-import {Block} from 'baseui/block';
-import {Spinner} from 'baseui/spinner';
+import {useStyletron} from 'baseui';
 
 import Container from '../components/Container';
 import H1 from '../components/H1';
@@ -14,6 +13,7 @@ import Text from '../components/Text';
 import {fetcher, swrOptions} from '../utils';
 
 const Home: NextPage = () => {
+  const [css, _] = useStyletron();
   const {data, error} = useSWR('/api/home', fetcher, swrOptions);
 
   if (error) {
@@ -29,7 +29,14 @@ const Home: NextPage = () => {
   return (
     <Container>
       <H1>Floor Report</H1>
-      <Text>Floor Report: NFT floor prices & analytics</Text>
+      <Text
+        className={css({
+          fontStyle: 'italic',
+          marginTop: 0,
+        })}
+      >
+        NFT floor prices & analytics
+      </Text>
       <Stats stats={stats} />
       <RandomNFT nft={randomNFT} />
     </Container>
