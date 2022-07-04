@@ -1,37 +1,61 @@
 import React from 'react';
 import Image from 'next/image';
 
-import FloorPrice from '../../components/FloorPrice';
+import {styled, useStyletron} from 'baseui';
+import {Block} from 'baseui/block';
+
+import Text from '../../components/Text';
 import {CollectionT} from '../../types';
+import {themedStyled} from '../../pages/providers';
+
+const Container = styled(Block, () => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+}));
+
+const CollectionContainer = styled(Block, () => ({
+  display: 'flex',
+  width: '90%',
+}));
+
+const FloorContainer = styled(Block, () => ({
+  display: 'flex',
+  width: '10%',
+  justifyContent: 'flex-end',
+}));
 
 type Props = {
   collection: CollectionT;
 };
 
+const Quantity = styled('em', ({$theme}) => ({
+  marginLeft: $theme.sizing.scale200,
+}));
+
 const Collection = ({collection}: Props) => {
+  const [_, theme] = useStyletron();
   return (
-    <div>
-      <div>
+    <Container>
+      <CollectionContainer>
         {collection.thumb && (
-          <div>
+          <Block marginRight={theme.sizing.scale400}>
             <Image
               alt={collection.name}
               src={collection.thumb}
               width="64"
               height="64"
             />
-          </div>
+          </Block>
         )}
-        <div>
+        <Text>
           {collection.name}
-          <em>x{collection.numOwned}</em>
-        </div>
-      </div>
-      <div>
-        <FloorPrice floor={collection.floor} />
-      </div>
-    </div>
+          <Quantity>x{collection.numOwned}</Quantity>
+        </Text>
+      </CollectionContainer>
+      <FloorContainer>
+        <Text>{collection.floor} ETH</Text>
+      </FloorContainer>
+    </Container>
   );
 };
-
 export default Collection;

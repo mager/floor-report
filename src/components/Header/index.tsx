@@ -22,7 +22,6 @@ const Header = () => {
     {icon: Show, label: 'Updates', info: {href: Routes.UPDATES()}},
   ]);
   const [_, theme] = useStyletron();
-  console.log({theme});
 
   return (
     <AppNavBar

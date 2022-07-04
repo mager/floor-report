@@ -64,7 +64,7 @@ export type UserT = {
 export type GetAddressRespT = {
   address: string;
   ensName: string;
-  collections: CollectionRowT[];
+  collections: CollectionT[];
   nfts: NFTT[];
   totalETH: number;
   updatedAt: Date;

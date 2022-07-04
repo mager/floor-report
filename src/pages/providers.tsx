@@ -99,7 +99,6 @@ const darkTheme = {
 const Providers = ({children}) => {
   const {value} = useDarkMode(false, {storageKey: null, onChange: null});
   const theme = value ? darkTheme : lightTheme;
-  console.log({theme});
 
   const [mounted, setMounted] = useState(false);
 
