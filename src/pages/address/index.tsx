@@ -1,18 +1,19 @@
-import useSWR from 'swr';
+import React from 'react';
 import TimeAgo from 'react-timeago';
+import useSWR from 'swr';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 import {useTheme} from 'next-themes';
 
 import {Block} from 'baseui/block';
 
-import {ellipseAddress, fetcher, swrOptions} from '../../utils';
-import Loading from '../../components/Loading';
 import Collection from '../../components/Collection';
+import Container from '../../components/Container';
+import Loading from '../../components/Loading';
 import Totals from '../../components/Totals';
 import Error from '../../components/Error';
 import {CollectionT, GetAddressRespT, NFTT, UserT} from '../../types';
-import Container from '../../components/Container';
+import {ellipseAddress, fetcher, swrOptions} from '../../utils';
 
 export const Address = (props: any): JSX.Element => {
   const {query} = useRouter();
@@ -55,7 +56,7 @@ export const Address = (props: any): JSX.Element => {
   return (
     <Container>
       {data.collections.map((collection: CollectionT, i: number) => (
-        <Block>{collection.name}</Block>
+        <Block key={i}>{collection.name}</Block>
       ))}
     </Container>
   );
