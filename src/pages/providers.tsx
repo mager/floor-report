@@ -54,6 +54,7 @@ export const themedStyled = createThemedStyled<CustomThemeT>();
 
 const primitives = {
   primaryFontFamily: 'Titillium Web',
+  linkVisited: '#f00',
 };
 
 const overrides = {
@@ -98,6 +99,7 @@ const darkTheme = {
 const Providers = ({children}) => {
   const {value} = useDarkMode(false, {storageKey: null, onChange: null});
   const theme = value ? darkTheme : lightTheme;
+  console.log({theme});
 
   const [mounted, setMounted] = useState(false);
 

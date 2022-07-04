@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {useRouter} from 'next/router';
 
-import {withStyle} from 'baseui';
+import {withStyle, useStyletron} from 'baseui';
 import {AppNavBar, setItemActive} from 'baseui/app-nav-bar';
-import {Button} from 'baseui/button';
 import {Show} from 'baseui/icon';
 import {StyledLink} from 'baseui/link';
 import {Routes} from '../../constants';
@@ -22,6 +21,8 @@ const Header = () => {
     {icon: Show, label: 'About', info: {href: Routes.ABOUT()}},
     {icon: Show, label: 'Updates', info: {href: Routes.UPDATES()}},
   ]);
+  const [_, theme] = useStyletron();
+  console.log({theme});
 
   return (
     <AppNavBar
@@ -36,18 +37,13 @@ const Header = () => {
       overrides={{
         Root: {
           style: {
-            backgroundColor: '#f5f5f5',
+            backgroundColor: theme.colors.backgroundSecondary,
             maxWidth: 'auto',
           },
         },
         AppName: {
           // @ts-ignore
           component: () => <AppName href="/">Fr</AppName>,
-        },
-        MainMenuItem: {
-          style: ({$theme}) => ({
-            fontFamily: 'Coustard',
-          }),
         },
       }}
     />

@@ -1,8 +1,8 @@
 import React from 'react';
-import Link from 'next/link';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
+import {StyledLink} from 'baseui/link';
 
 import {Routes} from '../../constants';
 import H5 from '../H5';
@@ -29,8 +29,9 @@ const Container = styled(Block, ({$theme}) => ({
 }));
 
 const Image = styled('img', ({$theme}) => ({
+  border: `1px solid ${$theme.colors.border}`,
   width: '100%',
-  padding: `0 0 ${$theme.sizing.scale400}`,
+  margin: `0 0 ${$theme.sizing.scale400}`,
   [$theme.mediaQuery.medium]: {
     width: '50%',
   },
@@ -38,13 +39,15 @@ const Image = styled('img', ({$theme}) => ({
 
 const RandomNFT = ({nft}: Props) => {
   const {collectionName, collectionSlug, imageUrl, name, owner} = nft;
-
+  const displayName = `${collectionName} - ${name}`;
   return (
     <Block>
       <Container>
         <Image src={imageUrl} />
         <H5>
-          <Link href={Routes.COLLECTION(collectionSlug)}>{collectionName}</Link>
+          <StyledLink href={Routes.COLLECTION(collectionSlug)}>
+            {displayName}
+          </StyledLink>
         </H5>
         <H6>Owned by {owner}</H6>
       </Container>
