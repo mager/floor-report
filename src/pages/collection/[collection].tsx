@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Marquee from 'react-fast-marquee';
 import TimeAgo from 'react-timeago';
 
 import {styled, useStyletron} from 'baseui';
@@ -8,6 +9,7 @@ import {Block} from 'baseui/block';
 import {API_PATH} from '../../utils';
 import Container from '../../components/Container';
 import H1 from '../../components/H1';
+import CollectionStatsMarquee from '../../components/StatsMarquee';
 import Loading from '../../components/Loading';
 import Text from '../../components/Text';
 
@@ -51,6 +53,9 @@ const Collection = ({collection}) => {
           </Text>
         </Block>
       </Grid>
+      <Marquee speed={60} gradientWidth={60}>
+        <CollectionStatsMarquee collection={collection} />
+      </Marquee>
     </Container>
   );
 };

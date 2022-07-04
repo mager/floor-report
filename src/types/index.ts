@@ -37,3 +37,36 @@ export type CollectionT = {
   isFollowing: boolean;
   collection: Collection;
 };
+
+export type CollectionRowT = {
+  name: string;
+  slug: string;
+  thumb: string;
+  floor: number;
+  '7d': number;
+};
+
+export type FrenT = {
+  address: string;
+  name: string;
+  slug: string;
+  imageUrl: string;
+  photo: boolean;
+};
+
+export type UserT = {
+  name: string;
+  opensea: string;
+  photo: boolean;
+  twitter: string;
+};
+
+export type GetAddressRespT = {
+  address: string;
+  ensName: string;
+  collections: CollectionRowT[];
+  nfts: NFTT[];
+  totalETH: number;
+  updatedAt: Date;
+  user: UserT;
+};
