@@ -6,6 +6,7 @@ import {AppNavBar, setItemActive} from 'baseui/app-nav-bar';
 import {Button} from 'baseui/button';
 import {Show} from 'baseui/icon';
 import {StyledLink} from 'baseui/link';
+import {Routes} from '../../constants';
 
 const AppName = withStyle(StyledLink, ({$theme}) => ({
   fontSize: $theme.sizing.scale1600,
@@ -18,8 +19,8 @@ const AppName = withStyle(StyledLink, ({$theme}) => ({
 const Header = () => {
   const router = useRouter();
   const [mainItems, setMainItems] = React.useState([
-    {icon: Show, label: 'About', info: {href: '/about'}},
-    {icon: Show, label: 'Updates', info: {href: '/updates'}},
+    {icon: Show, label: 'About', info: {href: Routes.ABOUT()}},
+    {icon: Show, label: 'Updates', info: {href: Routes.UPDATES()}},
   ]);
 
   return (
@@ -33,6 +34,12 @@ const Header = () => {
         setMainItems((prev) => setItemActive(prev, item));
       }}
       overrides={{
+        Root: {
+          style: {
+            backgroundColor: '#f5f5f5',
+            maxWidth: 'auto',
+          },
+        },
         AppName: {
           // @ts-ignore
           component: () => <AppName href="/">Fr</AppName>,

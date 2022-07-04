@@ -15,10 +15,7 @@ type Props = {
   stats: Stats;
 };
 
-const Stats = ({stats}: Props) => {
-  console.log({stats});
-
-  const {totalCollections, totalUsers, updated} = stats;
+const Stats = ({stats: {totalCollections, totalUsers, updated}}: Props) => {
   return (
     <Block>
       <Text>

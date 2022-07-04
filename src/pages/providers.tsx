@@ -28,8 +28,8 @@ type CustomMediaQuery = {
 
 const breakpoints = {
   small: 320,
-  medium: 720,
-  large: 900,
+  medium: 640,
+  large: 1408,
 };
 const ResponsiveTheme = Object.keys(breakpoints).reduce(
   (acc, key) => {

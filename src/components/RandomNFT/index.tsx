@@ -1,8 +1,10 @@
 import React from 'react';
+import Link from 'next/link';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 
+import {Routes} from '../../constants';
 import H5 from '../H5';
 import H6 from '../H6';
 
@@ -11,7 +13,8 @@ type Props = {
 };
 
 type RandomNFT = {
-  collection: string;
+  collectionName: string;
+  collectionSlug: string;
   imageUrl: string;
   name: string;
   owner: string;
@@ -34,15 +37,14 @@ const Image = styled('img', ({$theme}) => ({
 }));
 
 const RandomNFT = ({nft}: Props) => {
-  const [css, theme] = useStyletron();
-  const {collection, imageUrl, name, owner} = nft;
+  const {collectionName, collectionSlug, imageUrl, name, owner} = nft;
 
   return (
     <Block>
       <Container>
         <Image src={imageUrl} />
         <H5>
-          {collection} - {name}
+          <Link href={Routes.COLLECTION(collectionSlug)}>{collectionName}</Link>
         </H5>
         <H6>Owned by {owner}</H6>
       </Container>

@@ -17,6 +17,14 @@ const About: NextPage = () => {
       <H1>Updates</H1>
       <Text>Just a list of updates...</Text>
       <Block>
+        <HeadingMedium>Week of 2022-07-04</HeadingMedium>
+        <List>
+          <ListItem>
+            <Text>Collection page</Text>
+          </ListItem>
+        </List>
+      </Block>
+      <Block>
         <HeadingMedium>Week of 2022-06-27</HeadingMedium>
         <List>
           <ListItem>

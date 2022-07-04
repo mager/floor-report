@@ -4,11 +4,11 @@ export const swrOptions = {
   revalidateOnFocus: false,
 };
 
-// export const API_PATH =
-//   process.env.NODE_ENV === 'development'
-//     ? 'http://localhost:8081'
-//     : 'https://keiko-jejxy3ytiq-uc.a.run.app';
-export const API_PATH = 'https://keiko-jejxy3ytiq-uc.a.run.app';
+export const API_PATH =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:8081'
+    : 'https://keiko-jejxy3ytiq-uc.a.run.app';
+// export const API_PATH = 'https://keiko-jejxy3ytiq-uc.a.run.app';
 
 export const ellipseAddress = (address = '', width = 8): string => {
   if (!address) {
