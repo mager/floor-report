@@ -3,10 +3,11 @@ import Image from 'next/image';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
+import {StyledLink} from 'baseui/link';
 
 import Text from '../../components/Text';
 import {CollectionT} from '../../types';
-import {themedStyled} from '../../pages/providers';
+import {Routes} from '../../constants';
 
 const Container = styled(Block, () => ({
   display: 'flex',
@@ -48,7 +49,9 @@ const Collection = ({collection}: Props) => {
           </Block>
         )}
         <Text>
-          {collection.name}
+          <StyledLink href={Routes.COLLECTION(collection.slug)}>
+            {collection.name}
+          </StyledLink>
           <Quantity>x{collection.numOwned}</Quantity>
         </Text>
       </CollectionContainer>

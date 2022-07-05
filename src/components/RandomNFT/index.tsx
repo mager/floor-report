@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {styled, useStyletron} from 'baseui';
+import {styled} from 'baseui';
 import {Block} from 'baseui/block';
 import {StyledLink} from 'baseui/link';
 
@@ -49,7 +49,9 @@ const RandomNFT = ({nft}: Props) => {
             {displayName}
           </StyledLink>
         </H5>
-        <H6>Owned by {owner}</H6>
+        <H6>
+          Owned by <StyledLink href={Routes.ADDRESS(owner)}>{owner}</StyledLink>
+        </H6>
       </Container>
     </Block>
   );

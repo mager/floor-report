@@ -7,6 +7,7 @@ import Collection from '../../components/Collection';
 import Container from '../../components/Container';
 import H1 from '../../components/H1';
 import Loading from '../../components/Loading';
+import Text from '../../components/Text';
 import {CollectionT, GetAddressRespT, UserT} from '../../types';
 import {API_PATH, ellipseAddress} from '../../utils';
 
@@ -21,7 +22,7 @@ export const Address = ({data}: Props): JSX.Element => {
   }
 
   if (data.collections?.length === 0) {
-    return <Block>No collections found</Block>;
+    return <Text>No collections found</Text>;
   }
 
   const user: UserT = data.user;
@@ -56,7 +57,6 @@ export async function getServerSideProps(context) {
   const url = `${API_PATH}/address/${context.query.address}`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log({data});
 
   return {
     props: {
