@@ -19,7 +19,7 @@ const Stats = ({stats: {totalCollections, totalUsers, updated}}: Props) => {
   return (
     <Block>
       <Text>
-        Indexing {totalCollections} collections, from {totalUsers} users,
+        Indexing {totalCollections} collections from {totalUsers} wallets,
         updated <TimeAgo date={updated} />
       </Text>
     </Block>
