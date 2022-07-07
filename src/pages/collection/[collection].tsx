@@ -8,6 +8,7 @@ import {Block} from 'baseui/block';
 
 import {API_PATH} from '../../utils';
 import Container from '../../components/Container';
+import Error from '../../components/Error';
 import H1 from '../../components/H1';
 import CollectionStatsMarquee from '../../components/StatsMarquee';
 import Loading from '../../components/Loading';
@@ -18,8 +19,12 @@ const Grid = styled(Block, () => ({
   margin: 0,
 }));
 
-const Collection = ({collection}) => {
+const Collection = ({collection, success}) => {
   const [_, theme] = useStyletron();
+  if (!success) {
+    return <Error message="Failed to fetch collection" />;
+  }
+
   if (!collection) {
     return <Loading />;
   }
@@ -63,10 +68,19 @@ const Collection = ({collection}) => {
 export async function getServerSideProps(context) {
   const url = `${API_PATH}/collection/${context.query.collection}`;
   const res = await fetch(url);
+  if (res.status !== 200) {
+    return {
+      props: {
+        success: false,
+      },
+    };
+  }
+
   const collection = await res.json();
 
   return {
     props: {
+      success: true,
       collection,
     },
   };
