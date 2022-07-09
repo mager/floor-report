@@ -35,6 +35,7 @@ const Header = () => {
               border: 'none',
               display: 'flex',
               alignItems: 'center',
+              backgroundColor: 'transparent',
               [$theme.mediaQuery.medium]: {
                 width: '100%',
                 flexDirection: 'row',
@@ -46,7 +47,7 @@ const Header = () => {
                 flexDirection: 'column',
                 alignItems: 'flex-start',
                 width: '100%',
-                padding: `${$theme.sizing.scale800} 0`,
+                padding: `${$theme.sizing.scale800} 0 ${$theme.sizing.scale400}`,
               },
             }),
           },
