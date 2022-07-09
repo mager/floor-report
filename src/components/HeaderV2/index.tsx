@@ -8,10 +8,11 @@ import {
   StyledNavigationList as NavigationList,
 } from 'baseui/header-navigation';
 import {StyledLink as Link} from 'baseui/link';
+import {Block} from 'baseui/block';
 import {StyledLink} from 'baseui/link';
 
 import Container from '../Container';
-// import Input from '../Input';
+import SearchInput from '../SearchInput';
 import {Routes} from '../../constants';
 
 const AppName = withStyle(StyledLink, ({$theme}) => ({
@@ -22,66 +23,94 @@ const AppName = withStyle(StyledLink, ({$theme}) => ({
   padding: `${$theme.sizing.scale800} 0`,
 }));
 
-const ResponsiveHeaderNavigation = styled(HeaderNavigation, ({$theme}) => ({
-  padding: `${$theme.sizing.scale200} 0`,
-  [$theme.mediaQuery.medium]: {
-    padding: `${$theme.sizing.scale400} 0`,
-  },
-  [$theme.mediaQuery.small]: {
-    padding: `${$theme.sizing.scale800} 0`,
-  },
-}));
-
 const Header = () => {
-  const [_, theme] = useStyletron();
+  const [css, theme] = useStyletron();
   return (
     <Container>
-      <ResponsiveHeaderNavigation
+      <HeaderNavigation
         overrides={{
           Root: {
             style: ({$theme}) => ({
-              padding: `${$theme.sizing.scale200} 0`,
+              padding: `${$theme.sizing.scale400} 0`,
               border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              [$theme.mediaQuery.medium]: {
+                width: '100%',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: `${$theme.sizing.scale400} 0`,
+              },
+              [$theme.mediaQuery.small]: {
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                width: '100%',
+                padding: `${$theme.sizing.scale800} 0`,
+              },
             }),
           },
         }}
       >
-        <NavigationList $align={ALIGN.left}>
-          <NavigationItem
+        <Block
+          className={css({
+            display: 'flex',
+            width: '100%',
+          })}
+        >
+          <NavigationList $align={ALIGN.left}>
+            <NavigationItem
+              $style={{
+                paddingLeft: 0,
+              }}
+            >
+              <AppName href="/" $theme={undefined}>
+                Fr
+              </AppName>
+            </NavigationItem>
+          </NavigationList>
+          <NavigationList
+            $align={ALIGN.center}
             $style={{
-              paddingLeft: 0,
+              marginBottom: theme.sizing.scale400,
+              [theme.mediaQuery.small]: {
+                marginLeft: theme.sizing.scale400,
+              },
             }}
           >
-            <AppName href="/" $theme={undefined}>
-              Fr
-            </AppName>
-          </NavigationItem>
-        </NavigationList>
-        <NavigationList
-          $align={ALIGN.center}
-          $style={{
-            marginBottom: theme.sizing.scale400,
-          }}
-        >
-          {/* <Input
-            placeholder="Search for an address or collection"
-            onDoneTyping={(val) => console.log('Value is updated to: ', val)}
-          /> */}
-        </NavigationList>
-        <NavigationList
-          $align={ALIGN.right}
-          $style={{
-            marginBottom: theme.sizing.scale400,
-          }}
-        >
-          <NavigationItem>
-            <Link href={Routes.ABOUT()}>About</Link>
-          </NavigationItem>
-          <NavigationItem>
-            <Link href={Routes.UPDATES()}>Updates</Link>
-          </NavigationItem>
-        </NavigationList>
-      </ResponsiveHeaderNavigation>
+            <SearchInput placeholder="Search for a collection" />
+          </NavigationList>
+        </Block>
+        <Block>
+          <NavigationList
+            $style={{
+              marginBottom: theme.sizing.scale400,
+            }}
+          >
+            <NavigationItem
+              $style={{
+                paddingLeft: 0,
+              }}
+            >
+              <Link href={Routes.FRENS()}>Frens</Link>
+            </NavigationItem>
+            {/* <NavigationItem
+              $style={{
+                padding: 0,
+              }}
+            >
+              <Link
+                href={Routes.FRENS()}
+                $style={{
+                  marginLeft: theme.sizing.scale800,
+                }}
+              >
+                Next
+              </Link>
+            </NavigationItem> */}
+          </NavigationList>
+        </Block>
+      </HeaderNavigation>
     </Container>
   );
 };

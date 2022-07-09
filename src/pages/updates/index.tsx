@@ -20,6 +20,9 @@ const About: NextPage = () => {
         <HeadingMedium>Week of 2022-07-04</HeadingMedium>
         <List>
           <ListItem>
+            <Text>Search box</Text>
+          </ListItem>
+          <ListItem>
             <Text>Collection page</Text>
           </ListItem>
         </List>

@@ -7,7 +7,7 @@ import {StyledLink} from 'baseui/link';
 import {ParagraphMedium} from 'baseui/typography';
 import {useTheme} from 'next-themes';
 
-import Text from '../Text';
+import {Routes} from '../../constants';
 
 const Main = styled(Block, ({$theme}) => ({
   width: '100%',
@@ -57,7 +57,8 @@ const Footer = () => {
       </Block>
       <Block>
         <Paragraph>
-          by <StyledLink href="https://twitter.com/mager">@mager</StyledLink>
+          <StyledLink href={Routes.ABOUT()}>Experiment</StyledLink> by{' '}
+          <StyledLink href="https://twitter.com/mager">@mager</StyledLink>
         </Paragraph>
       </Block>
     </Main>
