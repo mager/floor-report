@@ -93,22 +93,11 @@ const Header = () => {
                 paddingLeft: 0,
               }}
             >
+              <Link href={Routes.COLLECTIONS()}>Collections</Link>
+            </NavigationItem>
+            <NavigationItem>
               <Link href={Routes.FRENS()}>Frens</Link>
             </NavigationItem>
-            {/* <NavigationItem
-              $style={{
-                padding: 0,
-              }}
-            >
-              <Link
-                href={Routes.FRENS()}
-                $style={{
-                  marginLeft: theme.sizing.scale800,
-                }}
-              >
-                Next
-              </Link>
-            </NavigationItem> */}
           </NavigationList>
         </Block>
       </HeaderNavigation>

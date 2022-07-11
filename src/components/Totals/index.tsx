@@ -10,7 +10,7 @@ const Totals = (props: Props) => {
   return (
     <Block>
       <Block>TOTAL</Block>
-      <Block>{props.totalETH.toFixed(3)}Ξ</Block>
+      <Block>{props.totalETH.toFixed(3)}ETH</Block>
     </Block>
   );
 };

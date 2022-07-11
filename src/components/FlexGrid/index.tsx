@@ -1,28 +1,24 @@
 import * as React from 'react';
 
-import {BlockProps} from 'baseui/block';
-import {FlexGrid as Component, FlexGridItem} from 'baseui/flex-grid';
-
-const itemProps: BlockProps = {
-  backgroundColor: 'mono300',
-  height: 'scale1000',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-};
+import {FlexGrid as Component} from 'baseui/flex-grid';
 
 type Props = {
   children: React.ReactNode;
+  columns?: number[];
 };
 
-const FlexGrid = ({children}: Props) => (
-  <Component
-    flexGridColumnCount={[1, 2, 4, 4]}
-    flexGridColumnGap="scale800"
-    flexGridRowGap="scale800"
-  >
-    {children}
-  </Component>
-);
+const FlexGrid = ({children, columns}: Props) => {
+  const flexGridColumnCount = columns ? columns : [1, 2, 4, 4];
+
+  return (
+    <Component
+      flexGridColumnCount={flexGridColumnCount}
+      flexGridColumnGap="scale800"
+      flexGridRowGap="scale800"
+    >
+      {children}
+    </Component>
+  );
+};
 
 export default FlexGrid;

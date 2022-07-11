@@ -20,6 +20,36 @@ class MyDocument extends Document<{stylesheets: Sheet[]}> {
     return (
       <Html>
         <Head>
+          <title>Floor Report</title>
+          <meta
+            name="description"
+            content="Floor Report: NFT prices & analytics"
+          />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="true"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Titillium+Web:wght@300;700&display=swap"
+            rel="stylesheet"
+          />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=G-HQ101Y0052`}
+          />
+          <script
+            async
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HQ101Y0052');`,
+            }}
+          />
           {this.props.stylesheets.map((sheet, i) => (
             <style
               className="_styletron_hydrate_"

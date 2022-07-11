@@ -22,9 +22,7 @@ const InfoGrid = styled(Block, () => ({
   margin: 0,
 }));
 
-const TopNFTsGrid = styled(FlexGrid, () => ({
-  background: 'red',
-}));
+const TopNFTsGrid = styled(FlexGrid, () => ({}));
 
 const Collection = ({collection, success}) => {
   const [_, theme] = useStyletron();

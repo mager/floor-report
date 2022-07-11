@@ -7,6 +7,7 @@ export const Routes = {
   SETTINGS: () => '/settings',
   TRENDING: () => '/trending',
   UPDATES: () => '/updates',
+  COLLECTIONS: () => `/collections`,
   COLLECTION: (collection: string) => `/collection/${collection}`,
   ADDRESS: (address: string) => `/address/${address}`,
 };
