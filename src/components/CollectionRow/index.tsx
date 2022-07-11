@@ -16,16 +16,22 @@ type Props = {
   value?: number;
 };
 
-const Container = styled(Block, () => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-}));
-
-const Inner = styled(Block, ({$theme}) => ({
+const Container = styled(Block, ({$theme}) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   marginBottom: $theme.sizing.scale800,
+}));
+
+const Inner = styled(Block, () => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+}));
+
+const Floor = styled(Text, () => ({
+  fontWeight: 700,
+  margin: 0,
 }));
 
 const CollectionRow = (props: Props): JSX.Element => {
@@ -43,13 +49,13 @@ const CollectionRow = (props: Props): JSX.Element => {
         <Block marginRight={theme.sizing.scale400}>
           <Image src={collection.thumb} width="64" height="64" />
         </Block>
-        <Text>
+        <Text margin={0}>
           {showFloor
             ? `${collection.name} (${collection.floor}ETH)`
             : collection.name}
         </Text>
       </Inner>
-      {value && <Text>{value}ETH</Text>}
+      {value && <Floor margin={0}>{value}ETH</Floor>}
     </Container>
   );
 };
