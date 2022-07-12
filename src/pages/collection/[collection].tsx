@@ -30,6 +30,20 @@ const Floor = styled('span', ({$theme}) => ({
   fontSize: $theme.sizing.scale1200,
   color: $theme.colors.contentPositive,
   margin: 0,
+  [$theme.mediaQuery.small]: {
+    fontSize: $theme.sizing.scale800,
+  },
+}));
+
+const ResponsiveImage = styled('img', ({$theme}) => ({
+  [$theme.mediaQuery.medium]: {
+    width: '128px',
+    height: '128px',
+  },
+  [$theme.mediaQuery.small]: {
+    width: '64px',
+    height: '64px',
+  },
 }));
 
 const TopNFTsGrid = styled(FlexGrid, () => ({}));
@@ -53,7 +67,7 @@ const Collection = ({collection, success}) => {
       <InfoGrid>
         <Block display="flex">
           <Block marginRight={theme.sizing.scale400}>
-            <Image size="128" src={collection.thumb} name={collection.name} />
+            <ResponsiveImage src={collection.thumb} alt={collection.name} />
           </Block>
           <Block paddingRight={theme.sizing.scale800}>
             <H1>{collection.name}</H1>

@@ -58,6 +58,9 @@ const primitives = {
 };
 
 const overrides = {
+  colors: {
+    contentPositive: '#2ed94a',
+  },
   typography: {
     // H1
     font1050: {
