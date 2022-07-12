@@ -19,6 +19,16 @@ import Text from '../../components/Text';
 
 const InfoGrid = styled(Block, () => ({
   display: 'flex',
+  justifyContent: 'space-between',
+  margin: 0,
+}));
+
+const Floor = styled('span', ({$theme}) => ({
+  fontWeight: 600,
+  fontStyle: 'italic',
+  fontFamily: 'Spline Sans Mono',
+  fontSize: $theme.sizing.scale1200,
+  color: $theme.colors.contentPositive,
   margin: 0,
 }));
 
@@ -41,30 +51,35 @@ const Collection = ({collection, success}) => {
   return (
     <Container>
       <InfoGrid>
-        <Block marginRight={theme.sizing.scale400}>
-          <Image size="128" src={collection.thumb} name={collection.name} />
-        </Block>
-        <Block paddingRight={theme.sizing.scale800}>
-          <H1>{collection.name}</H1>
-          <Text margin={0}>
-            <a
-              href={`https://opensea.io/collection/${collection.slug}`}
-              target="_blank"
-              rel="noreferrer"
-            >{`opensea.io/${collection.slug}`}</a>
-          </Text>
-          {numOwners && totalSupply && (
+        <Block display="flex">
+          <Block marginRight={theme.sizing.scale400}>
+            <Image size="128" src={collection.thumb} name={collection.name} />
+          </Block>
+          <Block paddingRight={theme.sizing.scale800}>
+            <H1>{collection.name}</H1>
             <Text margin={0}>
-              <strong>{numOwners}</strong> owners,{' '}
-              <strong>{totalSupply}</strong> tokens
+              <a
+                href={`https://opensea.io/collection/${collection.slug}`}
+                target="_blank"
+                rel="noreferrer"
+              >{`opensea.io/${collection.slug}`}</a>
             </Text>
-          )}
-          <Text margin={0}>
-            Updated <TimeAgo date={collection.updated} />
-          </Text>
+            {numOwners && totalSupply && (
+              <Text margin={0}>
+                <strong>{numOwners}</strong> owners,{' '}
+                <strong>{totalSupply}</strong> tokens
+              </Text>
+            )}
+            <Text margin={0}>
+              Updated <TimeAgo date={collection.updated} />
+            </Text>
+          </Block>
+        </Block>
+        <Block>
+          <Floor>{collection.floor}ETH</Floor>
         </Block>
       </InfoGrid>
-      <Marquee speed={60} gradientWidth={60}>
+      <Marquee speed={60} gradient={false}>
         <CollectionStatsMarquee collection={collection} />
       </Marquee>
       {topNFTs && topNFTs.length > 0 && (

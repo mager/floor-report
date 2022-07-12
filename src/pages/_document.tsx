@@ -37,7 +37,7 @@ class MyDocument extends Document<{stylesheets: Sheet[]}> {
             crossOrigin="true"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Titillium+Web:wght@300;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Titillium+Web:wght@300;700&family=Spline+Sans+Mono:ital,wght@1,600&display=swap"
             rel="stylesheet"
           />
           <script
