@@ -1,12 +1,13 @@
 import React from 'react';
 
-import {useStyletron} from 'baseui';
+import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 import {Button} from 'baseui/button';
 
 import Collection from '../../components/Collection';
 import Container from '../../components/Container';
 import H1 from '../../components/H1';
+import H5 from '../../components/H5';
 import Loading from '../../components/Loading';
 import Text from '../../components/Text';
 import {CollectionT, GetAddressRespT, UserT} from '../../types';
@@ -15,6 +16,13 @@ import {API_PATH, ellipseAddress} from '../../utils';
 type Props = {
   data: GetAddressRespT;
 };
+
+const AddYourWallet = styled(Block, () => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'column',
+}));
 
 export const Address = ({data}: Props): JSX.Element => {
   const [_, theme] = useStyletron();
@@ -52,9 +60,16 @@ export const Address = ({data}: Props): JSX.Element => {
           </Block>
         ))
       ) : (
-        <Block>
-          <Button>Fetch collections (coming soon)</Button>
-        </Block>
+        <AddYourWallet>
+          <H5>Add your wallet to the Floor Report index</H5>
+          <Text marginBottom={theme.sizing.scale800}>
+            We&rsquo;ll fetch the latest floor prices for your NFTs from OpenSea
+            every 12 hours.
+          </Text>
+          <Block marginBottom={theme.sizing.scale800}>
+            <Button>Add me to the index</Button>
+          </Block>
+        </AddYourWallet>
       )}
     </Container>
   );

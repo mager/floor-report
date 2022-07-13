@@ -74,6 +74,7 @@ const Header = () => {
           <NavigationList
             $align={ALIGN.center}
             $style={{
+              marginRight: theme.sizing.scale800,
               marginBottom: theme.sizing.scale400,
               [theme.mediaQuery.small]: {
                 marginLeft: theme.sizing.scale400,
@@ -90,11 +91,19 @@ const Header = () => {
             }}
           >
             {address && (
-              <NavigationItem>
+              <NavigationItem
+                $style={{
+                  paddingLeft: address ? 0 : theme.sizing.scale800,
+                }}
+              >
                 <Link href={Routes.ADDRESS(address)}>Me</Link>
               </NavigationItem>
             )}
-            <NavigationItem>
+            <NavigationItem
+              $style={{
+                paddingLeft: address ? theme.sizing.scale800 : 0,
+              }}
+            >
               <Link href={Routes.COLLECTIONS()}>Collections</Link>
             </NavigationItem>
             <NavigationItem>
@@ -108,10 +117,7 @@ const Header = () => {
                   smallScreen: 'avatar',
                   largeScreen: 'full',
                 }}
-                showBalance={{
-                  smallScreen: false,
-                  largeScreen: true,
-                }}
+                showBalance={false}
               />
             </NavigationItem>
           </NavigationList>
