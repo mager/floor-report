@@ -1,3 +1,4 @@
+import useAddress from './useAddress';
 import useDebounce from './useDebounce';
 
-export {useDebounce};
+export {useAddress, useDebounce};

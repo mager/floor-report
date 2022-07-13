@@ -2,7 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {createThemedStyled, ThemeProvider} from 'baseui';
 import useDarkMode from 'use-dark-mode';
 import {ThemeProvider as NextThemeProvider} from 'next-themes';
-
+import '@rainbow-me/rainbowkit/styles.css';
+import {getDefaultWallets, RainbowKitProvider} from '@rainbow-me/rainbowkit';
+import {chain, configureChains, createClient, WagmiConfig} from 'wagmi';
+import {alchemyProvider} from 'wagmi/providers/alchemy';
+import {publicProvider} from 'wagmi/providers/public';
 import {createLightTheme, createDarkTheme} from 'baseui';
 import {Theme} from 'baseui/theme';
 
@@ -105,14 +109,33 @@ const Providers = ({children}) => {
 
   const [mounted, setMounted] = useState(false);
 
+  // Rainbow setup
+  const {chains, provider} = configureChains(
+    [chain.mainnet],
+    [alchemyProvider({alchemyId: process.env.ALCHEMY_ID}), publicProvider()],
+  );
+  const {connectors} = getDefaultWallets({
+    appName: 'Floor Report',
+    chains,
+  });
+  const wagmiClient = createClient({
+    autoConnect: true,
+    connectors,
+    provider,
+  });
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const body = (
-    <ThemeProvider theme={theme as CustomThemeT}>
-      <NextThemeProvider>{children}</NextThemeProvider>
-    </ThemeProvider>
+    <WagmiConfig client={wagmiClient}>
+      <RainbowKitProvider chains={chains}>
+        <ThemeProvider theme={theme as CustomThemeT}>
+          <NextThemeProvider>{children}</NextThemeProvider>
+        </ThemeProvider>
+      </RainbowKitProvider>
+    </WagmiConfig>
   );
 
   // Prevents SSR flash for mismatched dark mode

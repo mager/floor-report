@@ -1,6 +1,7 @@
 import React from 'react';
+import {ConnectButton} from '@rainbow-me/rainbowkit';
 
-import {styled, withStyle, useStyletron} from 'baseui';
+import {withStyle, useStyletron} from 'baseui';
 import {
   HeaderNavigation,
   ALIGN,
@@ -12,6 +13,7 @@ import {Block} from 'baseui/block';
 import {StyledLink} from 'baseui/link';
 
 import Container from '../Container';
+import {useAddress} from '../../utils/hooks';
 import SearchInput from '../SearchInput';
 import {Routes} from '../../constants';
 
@@ -26,6 +28,8 @@ const AppName = withStyle(StyledLink, ({$theme}) => ({
 
 const Header = () => {
   const [css, theme] = useStyletron();
+  const address = useAddress();
+
   return (
     <Container>
       <HeaderNavigation
@@ -85,15 +89,30 @@ const Header = () => {
               marginBottom: theme.sizing.scale400,
             }}
           >
-            <NavigationItem
-              $style={{
-                paddingLeft: 0,
-              }}
-            >
+            {address && (
+              <NavigationItem>
+                <Link href={Routes.ADDRESS(address)}>Me</Link>
+              </NavigationItem>
+            )}
+            <NavigationItem>
               <Link href={Routes.COLLECTIONS()}>Collections</Link>
             </NavigationItem>
             <NavigationItem>
               <Link href={Routes.FRENS()}>Frens</Link>
+            </NavigationItem>
+            <NavigationItem>
+              <ConnectButton
+                label="Connect"
+                chainStatus="none"
+                accountStatus={{
+                  smallScreen: 'avatar',
+                  largeScreen: 'full',
+                }}
+                showBalance={{
+                  smallScreen: false,
+                  largeScreen: true,
+                }}
+              />
             </NavigationItem>
           </NavigationList>
         </Block>
