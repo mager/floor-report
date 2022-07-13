@@ -2,6 +2,7 @@ import React from 'react';
 
 import {useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
+import {Button} from 'baseui/button';
 
 import Collection from '../../components/Collection';
 import Container from '../../components/Container';
@@ -44,11 +45,17 @@ export const Address = ({data}: Props): JSX.Element => {
       <Block marginBottom={theme.sizing.scale800}>
         <H1>{getName(user, data)}</H1>
       </Block>
-      {data.collections.map((collection: CollectionT, i: number) => (
-        <Block key={i}>
-          <Collection collection={collection} />
+      {data.collections ? (
+        data.collections.map((collection: CollectionT, i: number) => (
+          <Block key={i}>
+            <Collection collection={collection} />
+          </Block>
+        ))
+      ) : (
+        <Block>
+          <Button>Fetch collections (coming soon)</Button>
         </Block>
-      ))}
+      )}
     </Container>
   );
 };
