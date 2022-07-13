@@ -10,21 +10,22 @@ import Loading from '../components/Loading';
 import RandomNFT from '../components/RandomNFT';
 import Stats from '../components/Stats';
 import Text from '../components/Text';
-import {fetcher, swrOptions} from '../utils';
+import {API_PATH} from '../utils';
+import {HomeT} from '../types';
 
-const Home: NextPage = () => {
+type Props = {
+  home: HomeT;
+  success: boolean;
+};
+
+const Home = ({home, success}: Props) => {
   const [css, _] = useStyletron();
-  const {data, error} = useSWR('/api/home', fetcher, swrOptions);
 
-  if (error) {
-    console.error(error);
-  }
-
-  if (!data) {
+  if (!home) {
     return <Loading />;
   }
 
-  const {randomNFT, stats} = data;
+  const {randomNFT, stats} = home;
 
   return (
     <Container>
@@ -42,5 +43,26 @@ const Home: NextPage = () => {
     </Container>
   );
 };
+
+export async function getServerSideProps() {
+  const url = `${API_PATH}/home`;
+  const res = await fetch(url);
+  if (res.status !== 200) {
+    return {
+      props: {
+        success: false,
+      },
+    };
+  }
+
+  const home = await res.json();
+
+  return {
+    props: {
+      success: true,
+      home,
+    },
+  };
+}
 
 export default Home;

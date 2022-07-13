@@ -6,16 +6,17 @@ import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 import {FlexGridItem} from 'baseui/flex-grid';
 
-import {API_PATH} from '../../utils';
 import Container from '../../components/Container';
-import FlexGrid from '../../components/FlexGrid';
 import Error from '../../components/Error';
+import FlexGrid from '../../components/FlexGrid';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
-import CollectionStatsMarquee from '../../components/StatsMarquee';
 import Loading from '../../components/Loading';
 import Image from '../../components/Image';
+import CollectionStatsMarquee from '../../components/StatsMarquee';
 import Text from '../../components/Text';
+import {CollectionT} from '../../types';
+import {API_PATH} from '../../utils';
 
 const InfoGrid = styled(Block, () => ({
   display: 'flex',
@@ -30,6 +31,9 @@ const Floor = styled('span', ({$theme}) => ({
   fontSize: $theme.sizing.scale1200,
   color: $theme.colors.contentPositive,
   margin: 0,
+  [$theme.mediaQuery.medium]: {
+    fontSize: $theme.sizing.scale1200,
+  },
   [$theme.mediaQuery.small]: {
     fontSize: $theme.sizing.scale800,
   },
@@ -48,7 +52,12 @@ const ResponsiveImage = styled('img', ({$theme}) => ({
 
 const TopNFTsGrid = styled(FlexGrid, () => ({}));
 
-const Collection = ({collection, success}) => {
+type Props = {
+  collection: CollectionT;
+  success: boolean;
+};
+
+const Collection = ({collection, success}: Props) => {
   const [_, theme] = useStyletron();
   if (!success) {
     return <Error message="Failed to fetch collection" />;

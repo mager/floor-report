@@ -21,6 +21,7 @@ const AppName = withStyle(StyledLink, ({$theme}) => ({
   fontFamily: 'Coustard',
   fontWeight: 'bold',
   padding: `${$theme.sizing.scale800} 0`,
+  color: $theme.colors.primary,
 }));
 
 const Header = () => {
@@ -31,8 +32,9 @@ const Header = () => {
         overrides={{
           Root: {
             style: ({$theme}) => ({
-              padding: `${$theme.sizing.scale400} 0`,
-              border: 'none',
+              paddingTop: $theme.sizing.scale400,
+              paddingBottom: $theme.sizing.scale400,
+              borderBottomWidth: 0,
               display: 'flex',
               alignItems: 'center',
               backgroundColor: 'transparent',
@@ -41,7 +43,6 @@ const Header = () => {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                padding: `${$theme.sizing.scale400} 0`,
               },
               [$theme.mediaQuery.small]: {
                 flexDirection: 'column',
@@ -60,12 +61,8 @@ const Header = () => {
           })}
         >
           <NavigationList $align={ALIGN.left}>
-            <NavigationItem
-              $style={{
-                paddingLeft: 0,
-              }}
-            >
-              <AppName href="/" $theme={undefined}>
+            <NavigationItem $style={{paddingLeft: 0}}>
+              <AppName href="/" $theme={theme}>
                 Fr
               </AppName>
             </NavigationItem>

@@ -54,12 +54,12 @@ export const themedStyled = createThemedStyled<CustomThemeT>();
 
 const primitives = {
   primaryFontFamily: 'Titillium Web',
-  linkVisited: '#f00',
 };
 
 const overrides = {
   colors: {
     contentPositive: '#2ed94a',
+    linkVisited: '#000',
   },
   typography: {
     // H1

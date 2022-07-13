@@ -4,15 +4,10 @@ import TimeAgo from 'react-timeago';
 import {Block} from 'baseui/block';
 
 import Text from '../Text';
-
-type Stats = {
-  totalCollections: number;
-  totalUsers: number;
-  updated: Date;
-};
+import {StatsT} from '../../types';
 
 type Props = {
-  stats: Stats;
+  stats: StatsT;
 };
 
 const Stats = ({stats: {totalCollections, totalUsers, updated}}: Props) => {

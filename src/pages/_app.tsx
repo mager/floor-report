@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Provider as StyletronProvider} from 'styletron-react';
+import Head from 'next/head';
 
 import Body from '../components/Body';
 import Footer from '../components/Footer';
@@ -18,6 +19,16 @@ export default function FloorReport({Component, pageProps}) {
 
   const body = (
     <Providers>
+      <Head>
+        <meta
+          name="description"
+          content="Floor Report: NFT prices & analytics"
+        />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+      </Head>
       <Body>
         <HeaderV2 />
         <Main>
