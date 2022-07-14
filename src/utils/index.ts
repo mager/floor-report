@@ -33,3 +33,9 @@ export const getHeaders = (
 
   return new Headers(headers);
 };
+
+export const getFrenPhoto = (photo: string) => {
+  const baseURL = 'https://storage.googleapis.com/public.floor.report/';
+
+  return `${baseURL}${photo}.png`;
+};

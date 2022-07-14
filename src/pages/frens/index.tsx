@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import {useStyletron} from 'baseui';
 import {StyledLink} from 'baseui/link';
@@ -7,10 +8,10 @@ import Container from '../../components/Container';
 import Error from '../../components/Error';
 import FlexGrid, {FlexItem} from '../../components/FlexGrid';
 import H1 from '../../components/H1';
+import Image from '../../components/Image';
 import Loading from '../../components/Loading';
-import Text from '../../components/Text';
 import type {FrenT} from '../../types';
-import {API_PATH} from '../../utils';
+import {API_PATH, getFrenPhoto} from '../../utils';
 import {Routes} from '../../constants';
 
 type Props = {
@@ -33,11 +34,21 @@ const Frens = ({frens, success}: Props) => {
   return (
     <Container>
       <H1 marginBottom={theme.sizing.scale800}>Frens</H1>
-      <Text marginBottom={theme.sizing.scale800}>Photos coming soon!</Text>
       {users && (
         <FlexGrid>
           {users.map((user) => (
             <FlexItem key={user.name}>
+              {user.photo && (
+                <Link href={Routes.ADDRESS(user.slug)}>
+                  <a>
+                    <Image
+                      name={user.name}
+                      size="100%"
+                      src={getFrenPhoto(user.address)}
+                    />
+                  </a>
+                </Link>
+              )}
               <StyledLink href={Routes.ADDRESS(user.slug)}>
                 {user.name}
               </StyledLink>

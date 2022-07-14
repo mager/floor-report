@@ -14,18 +14,18 @@ const Image = ({name, size, src}: Props) => {
       overrides={{
         Avatar: {
           style: ({$theme}) => ({
-            borderTopLeftRadius: $theme.borders.radius100,
-            borderTopRightRadius: $theme.borders.radius100,
-            borderBottomRightRadius: $theme.borders.radius100,
-            borderBottomLeftRadius: $theme.borders.radius100,
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+            borderBottomRightRadius: 0,
+            borderBottomLeftRadius: 0,
           }),
         },
         Root: {
           style: ({$theme}) => ({
-            borderTopLeftRadius: $theme.borders.radius100,
-            borderTopRightRadius: $theme.borders.radius100,
-            borderBottomRightRadius: $theme.borders.radius100,
-            borderBottomLeftRadius: $theme.borders.radius100,
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+            borderBottomRightRadius: 0,
+            borderBottomLeftRadius: 0,
           }),
         },
       }}
