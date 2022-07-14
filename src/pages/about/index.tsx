@@ -1,5 +1,4 @@
 import React from 'react';
-import type {NextPage} from 'next';
 
 import {styled} from 'baseui';
 import {Block} from 'baseui/block';
@@ -15,7 +14,7 @@ const StyledBlock = styled(Block, ({$theme}) => ({
   margin: `${$theme.sizing.scale800} 0`,
 }));
 
-const About: NextPage = () => {
+const About = () => {
   return (
     <Container>
       <HeadingXXLarge>About</HeadingXXLarge>

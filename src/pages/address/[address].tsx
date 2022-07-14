@@ -67,7 +67,7 @@ export const Address = ({data}: Props): JSX.Element => {
             every 12 hours.
           </Text>
           <Block marginBottom={theme.sizing.scale800}>
-            <Button>Add me to the index</Button>
+            <Button disabled>Add me to the index (COMING SOON)</Button>
           </Block>
         </AddYourWallet>
       )}

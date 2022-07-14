@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import {FlexGrid as Component} from 'baseui/flex-grid';
+import {styled} from 'baseui';
+import {FlexGrid as Component, FlexGridItem} from 'baseui/flex-grid';
 
 type Props = {
   children: React.ReactNode;
@@ -22,3 +23,7 @@ const FlexGrid = ({children, columns}: Props) => {
 };
 
 export default FlexGrid;
+
+export const FlexItem = styled(FlexGridItem, () => ({
+  cursor: 'pointer',
+}));

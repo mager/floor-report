@@ -54,10 +54,13 @@ export type CollectionRowT = {
 };
 
 export type FrenT = {
+  users: FrenUserT[];
+};
+
+export type FrenUserT = {
   address: string;
   name: string;
   slug: string;
-  imageUrl: string;
   photo: boolean;
 };
 
@@ -97,4 +100,13 @@ export type StatsT = {
   totalCollections: number;
   totalUsers: number;
   updated: string;
+};
+
+export type CollectionsT = {
+  trending: TrendingT;
+};
+
+export type TrendingT = {
+  topHighestFloor: Collection[];
+  topWeeklyVolume: Collection[];
 };

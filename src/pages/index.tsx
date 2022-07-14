@@ -1,17 +1,16 @@
 import React from 'react';
-import type {NextPage} from 'next';
-import useSWR from 'swr';
 
 import {useStyletron} from 'baseui';
 
 import Container from '../components/Container';
+import Error from '../components/Error';
 import H1 from '../components/H1';
 import Loading from '../components/Loading';
 import RandomNFT from '../components/RandomNFT';
 import Stats from '../components/Stats';
 import Text from '../components/Text';
-import {API_PATH} from '../utils';
 import {HomeT} from '../types';
+import {API_PATH} from '../utils';
 
 type Props = {
   home: HomeT;
@@ -20,6 +19,10 @@ type Props = {
 
 const Home = ({home, success}: Props) => {
   const [css, _] = useStyletron();
+
+  if (!success) {
+    return <Error message="Failed to fetch stats" />;
+  }
 
   if (!home) {
     return <Loading />;

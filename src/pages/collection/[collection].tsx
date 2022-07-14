@@ -4,11 +4,10 @@ import TimeAgo from 'react-timeago';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
-import {FlexGridItem} from 'baseui/flex-grid';
 
 import Container from '../../components/Container';
 import Error from '../../components/Error';
-import FlexGrid from '../../components/FlexGrid';
+import FlexGrid, {FlexItem} from '../../components/FlexGrid';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
 import Loading from '../../components/Loading';
@@ -49,8 +48,6 @@ const ResponsiveImage = styled('img', ({$theme}) => ({
     height: '64px',
   },
 }));
-
-const TopNFTsGrid = styled(FlexGrid, () => ({}));
 
 type Props = {
   collection: CollectionT;
@@ -108,14 +105,14 @@ const Collection = ({collection, success}: Props) => {
       {topNFTs && topNFTs.length > 0 && (
         <Block>
           <H4 marginBottom={theme.sizing.scale800}>Popular tokens</H4>
-          <TopNFTsGrid>
+          <FlexGrid>
             {topNFTs.map((nft) => (
-              <FlexGridItem key={nft.name}>
+              <FlexItem key={nft.name}>
                 <Image name={nft.name} size="100%" src={nft.image} />
                 <Text>{nft.name}</Text>
-              </FlexGridItem>
+              </FlexItem>
             ))}
-          </TopNFTsGrid>
+          </FlexGrid>
         </Block>
       )}
     </Container>

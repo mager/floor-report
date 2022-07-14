@@ -1,23 +1,23 @@
 import React from 'react';
 
 import {styled, useStyletron} from 'baseui';
-import {FlexGridItem} from 'baseui/flex-grid';
 
 import {API_PATH} from '../../utils';
 import Container from '../../components/Container';
 import CollectionRow from '../../components/CollectionRow';
 import Error from '../../components/Error';
-import FlexGrid from '../../components/FlexGrid';
+import FlexGrid, {FlexItem} from '../../components/FlexGrid';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
 import Loading from '../../components/Loading';
-import {CollectionRowT} from '../../types';
+import {CollectionRowT, CollectionsT} from '../../types';
 
-const FlexItem = styled(FlexGridItem, () => ({
-  cursor: 'pointer',
-}));
+type Props = {
+  collections: CollectionsT;
+  success: boolean;
+};
 
-const Collections = ({collections, success}) => {
+const Collections = ({collections, success}: Props) => {
   const [_, theme] = useStyletron();
 
   if (!success) {
@@ -70,7 +70,7 @@ const Collections = ({collections, success}) => {
   );
 };
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const url = `${API_PATH}/collections`;
   const res = await fetch(url);
   if (res.status !== 200) {

@@ -6,7 +6,6 @@ export const Routes = {
   PRIVACY: () => '/privacy',
   SETTINGS: () => '/settings',
   TRENDING: () => '/trending',
-  UPDATES: () => '/updates',
   COLLECTIONS: () => `/collections`,
   COLLECTION: (collection: string) => `/collection/${collection}`,
   ADDRESS: (address: string) => `/address/${address}`,
