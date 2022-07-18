@@ -92,6 +92,13 @@ const overrides = {
   },
 };
 
+const darkOverrides = {
+  ...overrides,
+  colors: {
+    linkVisited: '#fff',
+  },
+};
+
 const lightTheme = {
   ...{name: 'light'},
   ...createLightTheme(primitives, overrides),
@@ -99,7 +106,7 @@ const lightTheme = {
 };
 const darkTheme = {
   ...{name: 'dark'},
-  ...createDarkTheme(primitives, overrides),
+  ...createDarkTheme(primitives, darkOverrides),
   ...ResponsiveTheme,
 };
 
