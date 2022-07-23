@@ -1,4 +1,5 @@
 import React from 'react';
+import TimeAgo from 'react-timeago';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
@@ -40,9 +41,17 @@ const UserInfo = styled(Block, () => ({
 
 const FloorInfo = styled(Block, () => ({
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'flex-end',
   justifyContent: 'center',
+  flexDirection: 'column',
 }));
+
+const Updated = styled(Text, ({$theme}) => ({
+  margin: 0,
+  fontSize: $theme.sizing.scale550,
+}));
+
+const Name = styled(Block, ({$theme}) => ({}));
 
 export const Address = ({data}: Props): JSX.Element => {
   const [_, theme] = useStyletron();
@@ -75,8 +84,17 @@ export const Address = ({data}: Props): JSX.Element => {
     <Container>
       <InfoGrid marginBottom={theme.sizing.scale800}>
         <UserInfo>
-          <ResponsiveImage src={getFrenPhoto(address)} alt={displayName} />
-          <H1>{displayName}</H1>
+          {user.photo && (
+            <Block marginRight={theme.sizing.scale400}>
+              <ResponsiveImage src={getFrenPhoto(address)} alt={displayName} />
+            </Block>
+          )}
+          <Name>
+            <H1 marginTop={theme.sizing.scale500}>{displayName}</H1>
+            <Updated>
+              Updated <TimeAgo date={data.updatedAt} />
+            </Updated>
+          </Name>
         </UserInfo>
         <FloorInfo>
           <FloorPrice>{data.totalETH}ETH</FloorPrice>
