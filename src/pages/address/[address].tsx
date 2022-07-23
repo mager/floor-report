@@ -6,22 +6,42 @@ import {Button} from 'baseui/button';
 
 import Collection from '../../components/Collection';
 import Container from '../../components/Container';
+import FloorPrice from '../../components/FloorPrice';
 import H1 from '../../components/H1';
 import H5 from '../../components/H5';
 import Loading from '../../components/Loading';
+import ResponsiveImage from '../../components/ResponsiveImage';
 import Text from '../../components/Text';
 import {CollectionT, GetAddressRespT, UserT} from '../../types';
-import {API_PATH, ellipseAddress} from '../../utils';
+import {API_PATH, ellipseAddress, getFrenPhoto} from '../../utils';
 
 type Props = {
   data: GetAddressRespT;
 };
+
+const InfoGrid = styled(Block, () => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  margin: 0,
+}));
 
 const AddYourWallet = styled(Block, () => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'column',
+}));
+
+const UserInfo = styled(Block, () => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const FloorInfo = styled(Block, () => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 }));
 
 export const Address = ({data}: Props): JSX.Element => {
@@ -48,11 +68,20 @@ export const Address = ({data}: Props): JSX.Element => {
     return ellipseAddress(address);
   };
 
+  const displayName = getName(user, data);
+  const imageSrc = getFrenPhoto(address);
+
   return (
     <Container>
-      <Block marginBottom={theme.sizing.scale800}>
-        <H1>{getName(user, data)}</H1>
-      </Block>
+      <InfoGrid marginBottom={theme.sizing.scale800}>
+        <UserInfo>
+          <ResponsiveImage src={getFrenPhoto(address)} alt={displayName} />
+          <H1>{displayName}</H1>
+        </UserInfo>
+        <FloorInfo>
+          <FloorPrice>{data.totalETH}ETH</FloorPrice>
+        </FloorInfo>
+      </InfoGrid>
       {data.collections ? (
         data.collections.map((collection: CollectionT, i: number) => (
           <Block key={i}>

@@ -37,5 +37,5 @@ export const getHeaders = (
 export const getFrenPhoto = (photo: string) => {
   const baseURL = 'https://storage.googleapis.com/public.floor.report/';
 
-  return `${baseURL}${photo}.png`;
+  return `${baseURL}${photo.toLowerCase()}.png`;
 };

@@ -5,14 +5,16 @@ import TimeAgo from 'react-timeago';
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 
+import CollectionStatsMarquee from '../../components/StatsMarquee';
 import Container from '../../components/Container';
 import Error from '../../components/Error';
 import FlexGrid, {FlexItem} from '../../components/FlexGrid';
+import FloorPrice from '../../components/FloorPrice';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
 import Loading from '../../components/Loading';
 import Image from '../../components/Image';
-import CollectionStatsMarquee from '../../components/StatsMarquee';
+import ResponsiveImage from '../../components/ResponsiveImage';
 import Text from '../../components/Text';
 import {CollectionT} from '../../types';
 import {API_PATH} from '../../utils';
@@ -21,32 +23,6 @@ const InfoGrid = styled(Block, () => ({
   display: 'flex',
   justifyContent: 'space-between',
   margin: 0,
-}));
-
-const Floor = styled('span', ({$theme}) => ({
-  fontWeight: 600,
-  fontStyle: 'italic',
-  fontFamily: 'Spline Sans Mono',
-  fontSize: $theme.sizing.scale1200,
-  color: $theme.colors.contentPositive,
-  margin: 0,
-  [$theme.mediaQuery.medium]: {
-    fontSize: $theme.sizing.scale1200,
-  },
-  [$theme.mediaQuery.small]: {
-    fontSize: $theme.sizing.scale800,
-  },
-}));
-
-const ResponsiveImage = styled('img', ({$theme}) => ({
-  [$theme.mediaQuery.medium]: {
-    width: '128px',
-    height: '128px',
-  },
-  [$theme.mediaQuery.small]: {
-    width: '64px',
-    height: '64px',
-  },
 }));
 
 type Props = {
@@ -96,7 +72,7 @@ const Collection = ({collection, success}: Props) => {
           </Block>
         </Block>
         <Block>
-          <Floor>{collection.floor}ETH</Floor>
+          <FloorPrice>{collection.floor}ETH</FloorPrice>
         </Block>
       </InfoGrid>
       <Marquee speed={60} gradient={false}>
