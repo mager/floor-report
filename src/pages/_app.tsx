@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 import Body from '../components/Body';
 import Footer from '../components/Footer';
-import HeaderV2 from '../components/HeaderV2';
+import Header from '../components/Header';
 import Main from '../components/Main';
 import '../styles/index.css';
 
@@ -30,7 +30,7 @@ export default function FloorReport({Component, pageProps}) {
         />
       </Head>
       <Body>
-        <HeaderV2 />
+        <Header />
         <Main>
           <Component {...pageProps} />
         </Main>

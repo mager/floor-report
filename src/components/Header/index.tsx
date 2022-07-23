@@ -1,5 +1,4 @@
 import React from 'react';
-import {ConnectButton} from '@rainbow-me/rainbowkit';
 
 import {withStyle, useStyletron} from 'baseui';
 import {
@@ -13,6 +12,7 @@ import {Block} from 'baseui/block';
 import {StyledLink} from 'baseui/link';
 
 import Container from '../Container';
+import ConnectButton from '../ConnectButton';
 import {useAddress} from '../../utils/hooks';
 import SearchInput from '../SearchInput';
 import {Routes} from '../../constants';
@@ -112,12 +112,12 @@ const Header = () => {
             <NavigationItem>
               <ConnectButton
                 label="Connect"
-                chainStatus="none"
-                accountStatus={{
-                  smallScreen: 'avatar',
-                  largeScreen: 'full',
-                }}
-                showBalance={false}
+                // chainStatus="none"
+                // accountStatus={{
+                //   smallScreen: 'avatar',
+                //   largeScreen: 'full',
+                // }}
+                // showBalance={false}
               />
             </NavigationItem>
           </NavigationList>
