@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TimeAgo from 'react-timeago';
+import {useAccount} from 'wagmi';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 import {Button} from 'baseui/button';
+import {Drawer} from 'baseui/drawer';
+import {StyledLink} from 'baseui/link';
 
 import Collection from '../../components/Collection';
 import Container from '../../components/Container';
+import EditProfile from '../../components/EditProfile';
 import FloorPrice from '../../components/FloorPrice';
 import H1 from '../../components/H1';
 import H5 from '../../components/H5';
+import InlineLink from '../../components/InlineLink';
 import Loading from '../../components/Loading';
 import ResponsiveImage from '../../components/ResponsiveImage';
 import Text from '../../components/Text';
@@ -20,10 +25,10 @@ type Props = {
   data: GetAddressRespT;
 };
 
-const InfoGrid = styled(Block, () => ({
+const InfoGrid = styled(Block, ({$theme}) => ({
   display: 'flex',
   justifyContent: 'space-between',
-  margin: 0,
+  margin: `0 0 ${$theme.sizing.scale800}`,
 }));
 
 const AddYourWallet = styled(Block, () => ({
@@ -48,13 +53,21 @@ const FloorInfo = styled(Block, () => ({
 
 const Updated = styled(Text, ({$theme}) => ({
   margin: 0,
+  marginTop: $theme.sizing.scale200,
   fontSize: $theme.sizing.scale550,
 }));
 
 const Name = styled(Block, ({$theme}) => ({}));
 
+const Edit = styled(Block, ({$theme}) => ({
+  fontSize: $theme.sizing.scale550,
+}));
+
 export const Address = ({data}: Props): JSX.Element => {
   const [_, theme] = useStyletron();
+  const {isConnected} = useAccount();
+  const [isOpen, setIsOpen] = React.useState(false);
+
   if (!data) {
     return <Loading />;
   }
@@ -82,11 +95,11 @@ export const Address = ({data}: Props): JSX.Element => {
 
   return (
     <Container>
-      <InfoGrid marginBottom={theme.sizing.scale800}>
+      <InfoGrid>
         <UserInfo>
           {user.photo && (
             <Block marginRight={theme.sizing.scale400}>
-              <ResponsiveImage src={getFrenPhoto(address)} alt={displayName} />
+              <ResponsiveImage src={imageSrc} alt={displayName} />
             </Block>
           )}
           <Name>
@@ -94,6 +107,13 @@ export const Address = ({data}: Props): JSX.Element => {
             <Updated>
               Updated <TimeAgo date={data.updatedAt} />
             </Updated>
+            {isConnected && (
+              <Edit>
+                <InlineLink onClick={() => setIsOpen(true)}>
+                  Edit Profile
+                </InlineLink>
+              </Edit>
+            )}
           </Name>
         </UserInfo>
         <FloorInfo>
@@ -118,6 +138,7 @@ export const Address = ({data}: Props): JSX.Element => {
           </Block>
         </AddYourWallet>
       )}
+      <EditProfile isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </Container>
   );
 };

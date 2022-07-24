@@ -10,7 +10,7 @@ export const API_PATH =
     : 'https://keiko-jejxy3ytiq-uc.a.run.app';
 // export const API_PATH = 'https://keiko-jejxy3ytiq-uc.a.run.app';
 
-export const ellipseAddress = (address = '', width = 8): string => {
+export const ellipseAddress = (address = '', width = 4): string => {
   if (!address) {
     return '';
   }

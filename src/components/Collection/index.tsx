@@ -73,7 +73,7 @@ const Collection = ({collection}: Props) => {
         <Quantity>x{collection.numOwned}</Quantity>
       </CollectionContainer>
       <FloorContainer>
-        <Text>{collection.floor}ETH</Text>
+        <Text margin={0}>{collection.floor}ETH</Text>
       </FloorContainer>
     </Container>
   );

@@ -137,7 +137,13 @@ const Providers = ({children}) => {
 
   const body = (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider
+        chains={chains}
+        appInfo={{
+          appName: 'Floor Report',
+          learnMoreUrl: 'https://floor.report/about',
+        }}
+      >
         <ThemeProvider theme={theme as CustomThemeT}>
           <NextThemeProvider>{children}</NextThemeProvider>
         </ThemeProvider>
