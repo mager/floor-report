@@ -1,3 +1,5 @@
+import {GetAddressRespT, UserT} from '../types';
+
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 // https://swr.vercel.app/docs/revalidation#disable-automatic-revalidations
 export const swrOptions = {
@@ -15,6 +17,18 @@ export const ellipseAddress = (address = '', width = 4): string => {
     return '';
   }
   return `${address.slice(0, width)}...${address.slice(-width)}`;
+};
+
+export const getName = (user: UserT, data: GetAddressRespT) => {
+  if (user.name) {
+    return user.name;
+  }
+
+  if (data.ensName) {
+    return data.ensName;
+  }
+
+  return ellipseAddress(data.address);
 };
 
 export const getHeaders = (

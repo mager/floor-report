@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import TimeAgo from 'react-timeago';
 import {useAccount} from 'wagmi';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 import {Button} from 'baseui/button';
-import {Drawer} from 'baseui/drawer';
-import {StyledLink} from 'baseui/link';
 
 import Collection from '../../components/Collection';
 import Container from '../../components/Container';
@@ -19,7 +17,7 @@ import Loading from '../../components/Loading';
 import ResponsiveImage from '../../components/ResponsiveImage';
 import Text from '../../components/Text';
 import {CollectionT, GetAddressRespT, UserT} from '../../types';
-import {API_PATH, ellipseAddress, getFrenPhoto} from '../../utils';
+import {API_PATH, getFrenPhoto, getName} from '../../utils';
 
 type Props = {
   data: GetAddressRespT;
@@ -78,17 +76,6 @@ export const Address = ({data}: Props): JSX.Element => {
 
   const user: UserT = data.user;
   const address = data.address;
-  const getName = (user: UserT, data: GetAddressRespT) => {
-    if (user.name) {
-      return user.name;
-    }
-
-    if (data.ensName) {
-      return data.ensName;
-    }
-
-    return ellipseAddress(address);
-  };
 
   const displayName = getName(user, data);
   const imageSrc = getFrenPhoto(address);
@@ -138,7 +125,12 @@ export const Address = ({data}: Props): JSX.Element => {
           </Block>
         </AddYourWallet>
       )}
-      <EditProfile isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <EditProfile
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        imageSrc={imageSrc}
+        displayName={displayName}
+      />
     </Container>
   );
 };
