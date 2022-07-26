@@ -63,7 +63,7 @@ const Edit = styled(Block, ({$theme}) => ({
 
 export const Address = ({data}: Props): JSX.Element => {
   const [_, theme] = useStyletron();
-  const {isConnected} = useAccount();
+  const account = useAccount();
   const [isOpen, setIsOpen] = React.useState(false);
 
   if (!data) {
@@ -76,6 +76,8 @@ export const Address = ({data}: Props): JSX.Element => {
 
   const user: UserT = data.user;
   const address = data.address;
+  const usersWallet =
+    account.isConnected && account.address.toLowerCase() == address;
 
   const displayName = getName(user, data);
   const imageSrc = getFrenPhoto(address);
@@ -94,7 +96,7 @@ export const Address = ({data}: Props): JSX.Element => {
             <Updated>
               Updated <TimeAgo date={data.updatedAt} />
             </Updated>
-            {isConnected && (
+            {usersWallet && (
               <Edit>
                 <InlineLink onClick={() => setIsOpen(true)}>
                   Edit Profile
