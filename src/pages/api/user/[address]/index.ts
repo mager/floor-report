@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   } else {
     try {
       const response = await fetch(url, {
-        headers: req.headers as any,
+        headers: getHeaders(address),
         method: 'POST',
       });
       const resp = await response.json();
