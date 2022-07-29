@@ -9,8 +9,7 @@ export const swrOptions = {
 export const API_PATH =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:8081'
-    : 'https://keiko-jejxy3ytiq-uc.a.run.app';
-// export const API_PATH = 'https://keiko-jejxy3ytiq-uc.a.run.app';
+    : 'https://keiko.floor.report';
 
 export const ellipseAddress = (address = '', width = 4): string => {
   if (!address) {
