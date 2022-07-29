@@ -1,6 +1,7 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
 import {useAccount} from 'wagmi';
+import {useRouter} from 'next/router';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
@@ -15,6 +16,7 @@ import H5 from '../../components/H5';
 import InlineLink from '../../components/InlineLink';
 import Loading from '../../components/Loading';
 import ResponsiveImage from '../../components/ResponsiveImage';
+import Separator from '../../components/Separator';
 import Text from '../../components/Text';
 import {CollectionT, GetAddressRespT, UserT} from '../../types';
 import {API_PATH, getFrenPhoto, getName} from '../../utils';
@@ -62,9 +64,24 @@ const Edit = styled(Block, ({$theme}) => ({
 }));
 
 export const Address = ({data}: Props): JSX.Element => {
+  const {push, query} = useRouter();
   const [_, theme] = useStyletron();
   const account = useAccount();
   const [isOpen, setIsOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
+  const refresh = async () => {
+    setLoading(true);
+    const resp = await fetch(`/api/user/${account.address.toLowerCase()}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    setLoading(false);
+    push(`/address/${account.address.toLowerCase()}`);
+  };
 
   if (!data) {
     return <Loading />;
@@ -77,7 +94,8 @@ export const Address = ({data}: Props): JSX.Element => {
   const user: UserT = data.user;
   const address = data.address;
   const usersWallet =
-    account.isConnected && account.address.toLowerCase() == address;
+    account.isConnected &&
+    account.address.toLowerCase() == address.toLowerCase();
 
   const displayName = getName(user, data);
   const imageSrc = getFrenPhoto(address);
@@ -101,6 +119,12 @@ export const Address = ({data}: Props): JSX.Element => {
                 <InlineLink onClick={() => setIsOpen(true)}>
                   Edit Profile
                 </InlineLink>
+                <Separator />
+                {loading ? (
+                  <InlineLink disabled>Refreshing...</InlineLink>
+                ) : (
+                  <InlineLink onClick={() => refresh()}>Refresh</InlineLink>
+                )}
               </Edit>
             )}
           </Name>

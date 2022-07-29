@@ -12,6 +12,7 @@ export type Collection = {
   sales: number;
   updated: Date;
   topNFTs: TopNFTT[];
+  attributes: AttributeT[];
 };
 
 export type Trait = {
@@ -109,4 +110,11 @@ export type CollectionsT = {
 export type TrendingT = {
   topHighestFloor: Collection[];
   topWeeklyVolume: Collection[];
+};
+
+export type AttributeT = {
+  key: string;
+  value: string;
+  floor: number;
+  image: string;
 };

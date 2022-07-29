@@ -3,6 +3,7 @@ import {API_PATH, getHeaders} from '../../../../utils';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const address = (req.query.address as string).toLowerCase();
+
   if (!address) {
     return;
   }
@@ -27,7 +28,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const response = await fetch(url, {
         headers: req.headers as any,
         method: 'POST',
-        body: JSON.stringify(req.body),
       });
       const resp = await response.json();
 
