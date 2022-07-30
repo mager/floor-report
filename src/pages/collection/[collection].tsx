@@ -47,6 +47,9 @@ const Collection = ({collection, success}: Props) => {
   const topNFTs = collection.collection.topNFTs;
   const attributes = collection.collection.attributes;
 
+  const hasTopNFTs = topNFTs && topNFTs.length > 0;
+  const hasAttributes = attributes && attributes.length > 0;
+
   return (
     <Container>
       <InfoGrid>
@@ -81,7 +84,7 @@ const Collection = ({collection, success}: Props) => {
       <Marquee speed={60} gradient={false}>
         <CollectionStatsMarquee collection={collection} />
       </Marquee>
-      {topNFTs && topNFTs.length > 0 && (
+      {!hasAttributes && hasTopNFTs && (
         <Block>
           <H4 marginBottom={theme.sizing.scale800}>Popular tokens</H4>
           <FlexGrid>
@@ -94,7 +97,7 @@ const Collection = ({collection, success}: Props) => {
           </FlexGrid>
         </Block>
       )}
-      {attributes && attributes.length > 0 && (
+      {hasAttributes && (
         <AttributeFloors slug={collection.slug} attributes={attributes} />
       )}
     </Container>

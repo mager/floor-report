@@ -21,6 +21,7 @@ const Container = styled(Block, ({$theme}) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   marginBottom: $theme.sizing.scale800,
+  cursor: 'pointer',
 }));
 
 const Inner = styled(Block, () => ({

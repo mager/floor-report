@@ -12,7 +12,7 @@ const Component = styled(Block, ({$theme}) => ({
   margin: 0,
   letterSpacing: '-3px',
   [$theme.mediaQuery.medium]: {
-    fontSize: $theme.sizing.scale1000,
+    fontSize: $theme.sizing.scale900,
   },
   [$theme.mediaQuery.small]: {
     fontSize: $theme.sizing.scale800,

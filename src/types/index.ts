@@ -40,7 +40,7 @@ export type CollectionT = {
   collection: Collection;
 };
 
-type TopNFTT = {
+export type TopNFTT = {
   name: string;
   image: string;
   osLink: string;

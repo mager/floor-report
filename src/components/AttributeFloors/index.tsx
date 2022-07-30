@@ -44,21 +44,26 @@ const AttributeFloors = ({slug, attributes}: Props) => {
   return (
     <Block>
       <H4 marginBottom={theme.sizing.scale800}>Attribute Floors</H4>
-      <FlexGrid>
-        {attributes.map((attr) => (
-          <FlexItem key={attr.key}>
-            <Image name={attr.value} size="100%" src={attr.image} />
-            <Container>
-              <TextContainer>
-                <AttributeName>{attr.key}</AttributeName>
-                <StyledLink href={getOpenSeaAttributeURL(slug, attr)}>
-                  <AttributeValue>{attr.value}</AttributeValue>
-                </StyledLink>
-              </TextContainer>
-              <FloorPrice>{attr.floor}</FloorPrice>
-            </Container>
-          </FlexItem>
-        ))}
+      <FlexGrid columns={[1, 2, 3, 4]}>
+        {attributes.map((attr) => {
+          const openSeaURL = getOpenSeaAttributeURL(slug, attr);
+          return (
+            <FlexItem key={attr.key}>
+              <a href={openSeaURL} target="_blank" rel="noreferrer">
+                <Image name={attr.value} size="100%" src={attr.image} />
+              </a>
+              <Container>
+                <TextContainer>
+                  <AttributeName>{attr.key}</AttributeName>
+                  <StyledLink href={openSeaURL}>
+                    <AttributeValue>{attr.value}</AttributeValue>
+                  </StyledLink>
+                </TextContainer>
+                <FloorPrice>{attr.floor}</FloorPrice>
+              </Container>
+            </FlexItem>
+          );
+        })}
       </FlexGrid>
     </Block>
   );
