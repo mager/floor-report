@@ -51,11 +51,11 @@ const CollectionRow = (props: Props): JSX.Element => {
         </Block>
         <Text margin={0}>
           {showFloor
-            ? `${collection.name} (${collection.floor}ETH)`
+            ? `${collection.name} (${collection.floor}Ξ)`
             : collection.name}
         </Text>
       </Inner>
-      {value && <Floor margin={0}>{value}ETH</Floor>}
+      {value && <Floor margin={0}>{value}Ξ</Floor>}
     </Container>
   );
 };

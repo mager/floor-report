@@ -1,4 +1,4 @@
-import {GetAddressRespT, UserT} from '../types';
+import {AttributeT, GetAddressRespT, UserT} from '../types';
 
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 // https://swr.vercel.app/docs/revalidation#disable-automatic-revalidations
@@ -51,4 +51,11 @@ export const getFrenPhoto = (photo: string) => {
   const baseURL = 'https://storage.googleapis.com/public.floor.report/';
 
   return `${baseURL}${photo.toLowerCase()}.png`;
+};
+
+export const getOpenSeaAttributeURL = (slug: string, attribute: AttributeT) => {
+  const baseURL = 'https://opensea.io/collection';
+  const params = `?search[sortAscending]=true&search[sortBy]=UNIT_PRICE&search[stringTraits][0][name]=${attribute.key}&search[stringTraits][0][values][0]=${attribute.value}`;
+  const url = `${baseURL}/${slug}/${params}`;
+  return url;
 };

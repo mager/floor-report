@@ -130,7 +130,7 @@ export const Address = ({data}: Props): JSX.Element => {
           </Name>
         </UserInfo>
         <FloorInfo>
-          <FloorPrice>{data.totalETH}ETH</FloorPrice>
+          <FloorPrice>{data.totalETH}</FloorPrice>
         </FloorInfo>
       </InfoGrid>
       {data.collections ? (

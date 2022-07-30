@@ -24,6 +24,4 @@ const FlexGrid = ({children, columns}: Props) => {
 
 export default FlexGrid;
 
-export const FlexItem = styled(FlexGridItem, () => ({
-  cursor: 'pointer',
-}));
+export const FlexItem = styled(FlexGridItem, () => ({}));

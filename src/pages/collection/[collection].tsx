@@ -10,6 +10,7 @@ import Container from '../../components/Container';
 import Error from '../../components/Error';
 import FlexGrid, {FlexItem} from '../../components/FlexGrid';
 import FloorPrice from '../../components/FloorPrice';
+import FloorPriceLarge from '../../components/FloorPriceLarge';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
 import Loading from '../../components/Loading';
@@ -18,6 +19,7 @@ import ResponsiveImage from '../../components/ResponsiveImage';
 import Text from '../../components/Text';
 import {CollectionT} from '../../types';
 import {API_PATH} from '../../utils';
+import AttributeFloors from '../../components/AttributeFloors';
 
 const InfoGrid = styled(Block, () => ({
   display: 'flex',
@@ -43,6 +45,7 @@ const Collection = ({collection, success}: Props) => {
   const numOwners = collection.collection.num;
   const totalSupply = collection.collection.supply;
   const topNFTs = collection.collection.topNFTs;
+  const attributes = collection.collection.attributes;
 
   return (
     <Container>
@@ -72,7 +75,7 @@ const Collection = ({collection, success}: Props) => {
           </Block>
         </Block>
         <Block>
-          <FloorPrice>{collection.floor}ETH</FloorPrice>
+          <FloorPriceLarge>{collection.floor}</FloorPriceLarge>
         </Block>
       </InfoGrid>
       <Marquee speed={60} gradient={false}>
@@ -90,6 +93,9 @@ const Collection = ({collection, success}: Props) => {
             ))}
           </FlexGrid>
         </Block>
+      )}
+      {attributes && attributes.length > 0 && (
+        <AttributeFloors slug={collection.slug} attributes={attributes} />
       )}
     </Container>
   );

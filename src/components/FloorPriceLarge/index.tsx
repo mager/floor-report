@@ -7,20 +7,20 @@ const Component = styled(Block, ({$theme}) => ({
   fontWeight: 600,
   fontStyle: 'italic',
   fontFamily: 'Spline Sans Mono',
-  fontSize: $theme.sizing.scale1200,
+  fontSize: $theme.sizing.scale1400,
   color: $theme.colors.contentPositive,
   margin: 0,
   letterSpacing: '-3px',
   [$theme.mediaQuery.medium]: {
-    fontSize: $theme.sizing.scale1000,
+    fontSize: $theme.sizing.scale1200,
   },
   [$theme.mediaQuery.small]: {
-    fontSize: $theme.sizing.scale800,
+    fontSize: $theme.sizing.scale1000,
   },
 }));
 
 const ETH = styled('span', ({$theme}) => ({
-  fontSize: $theme.sizing.scale600,
+  fontSize: $theme.sizing.scale800,
   fontFamily: 'Helvetica',
 }));
 

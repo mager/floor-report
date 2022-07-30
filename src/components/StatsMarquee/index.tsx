@@ -17,7 +17,7 @@ const CollectionStatsMarquee = (props: Props) => {
   const [_, theme] = useStyletron();
 
   let s: string = ' ';
-  const sep: string = 'ETH · ';
+  const sep: string = 'Ξ · ';
 
   if (collection['1d']) {
     s += '24 hour volume: ';
