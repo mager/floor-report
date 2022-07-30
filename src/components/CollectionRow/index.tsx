@@ -5,7 +5,8 @@ import {useRouter} from 'next/router';
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 
-import Text from '../Text';
+import FloorPrice from '../../components/FloorPrice';
+import Text from '../../components/Text';
 import {Routes} from '../../constants';
 import {CollectionRowT} from '../../types';
 
@@ -56,7 +57,7 @@ const CollectionRow = (props: Props): JSX.Element => {
             : collection.name}
         </Text>
       </Inner>
-      {value && <Floor margin={0}>{value}Ξ</Floor>}
+      {value && <FloorPrice>{value}</FloorPrice>}
     </Container>
   );
 };

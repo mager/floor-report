@@ -27,6 +27,10 @@ const InfoGrid = styled(Block, () => ({
   margin: 0,
 }));
 
+const InfoContainer = styled(Block, () => ({
+  display: 'flex',
+}));
+
 type Props = {
   collection: CollectionT;
   success: boolean;
@@ -53,7 +57,7 @@ const Collection = ({collection, success}: Props) => {
   return (
     <Container>
       <InfoGrid>
-        <Block display="flex">
+        <InfoContainer>
           <Block marginRight={theme.sizing.scale400}>
             <ResponsiveImage src={collection.thumb} alt={collection.name} />
           </Block>
@@ -74,7 +78,7 @@ const Collection = ({collection, success}: Props) => {
               Updated <TimeAgo date={collection.updated} />
             </Text>
           </Block>
-        </Block>
+        </InfoContainer>
         <Block>
           <FloorPriceLarge>{collection.floor}</FloorPriceLarge>
         </Block>

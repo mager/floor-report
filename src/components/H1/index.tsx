@@ -14,6 +14,7 @@ const Component = styled(HeadingXXLarge, ({$theme}) => ({
   [$theme.mediaQuery.small]: {
     fontSize: $theme.sizing.scale850,
     lineHeight: $theme.sizing.scale850,
+    wordBreak: 'break-all',
   },
 }));
 
