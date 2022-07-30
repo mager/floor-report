@@ -4,12 +4,12 @@ import TimeAgo from 'react-timeago';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
+import {StyledLink} from 'baseui/link';
 
 import CollectionStatsMarquee from '../../components/StatsMarquee';
 import Container from '../../components/Container';
 import Error from '../../components/Error';
 import FlexGrid, {FlexItem} from '../../components/FlexGrid';
-import FloorPrice from '../../components/FloorPrice';
 import FloorPriceLarge from '../../components/FloorPriceLarge';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
@@ -60,11 +60,9 @@ const Collection = ({collection, success}: Props) => {
           <Block paddingRight={theme.sizing.scale800}>
             <H1>{collection.name}</H1>
             <Text margin={0}>
-              <a
+              <StyledLink
                 href={`https://opensea.io/collection/${collection.slug}`}
-                target="_blank"
-                rel="noreferrer"
-              >{`opensea.io/${collection.slug}`}</a>
+              >{`opensea.io/${collection.slug}`}</StyledLink>
             </Text>
             {numOwners && totalSupply && (
               <Text margin={0}>

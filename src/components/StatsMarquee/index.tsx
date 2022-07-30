@@ -1,14 +1,24 @@
 import React from 'react';
 
-import {useStyletron} from 'baseui';
+import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 
-import Text from '../Text';
+import H5 from '../H5';
 import {CollectionT} from '../../types';
 
 type Props = {
   collection: CollectionT;
 };
+
+const Wrapper = styled(Block, ({$theme}) => ({
+  padding: `${$theme.sizing.scale100} 0`,
+  width: '100%',
+}));
+
+const Component = styled(Block, ({$theme}) => ({
+  padding: $theme.sizing.scale800,
+  background: $theme.colors.background,
+}));
 
 const CollectionStatsMarquee = (props: Props) => {
   const {
@@ -17,7 +27,7 @@ const CollectionStatsMarquee = (props: Props) => {
   const [_, theme] = useStyletron();
 
   let s: string = ' ';
-  const sep: string = 'Ξ · ';
+  const sep: string = 'ETH · ';
 
   if (collection['1d']) {
     s += '24 hour volume: ';
@@ -52,9 +62,11 @@ const CollectionStatsMarquee = (props: Props) => {
   s += ' ';
 
   return (
-    <Block margin="30px">
-      <Text>{s}</Text>
-    </Block>
+    <Wrapper>
+      <Component>
+        <H5 margin={0}>{s}</H5>
+      </Component>
+    </Wrapper>
   );
 };
 
