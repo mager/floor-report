@@ -10,7 +10,7 @@ import {Button} from 'baseui/button';
 import Collection from '../../components/Collection';
 import Container from '../../components/Container';
 import EditProfile from '../../components/EditProfile';
-import FloorPrice from '../../components/FloorPrice';
+import FloorPriceLarge from '../../components/FloorPriceLarge';
 import H1 from '../../components/H1';
 import H5 from '../../components/H5';
 import InlineLink from '../../components/InlineLink';
@@ -130,7 +130,7 @@ export const Address = ({data}: Props): JSX.Element => {
           </Name>
         </UserInfo>
         <FloorInfo>
-          <FloorPrice>{data.totalETH}</FloorPrice>
+          <FloorPriceLarge>{data.totalETH}</FloorPriceLarge>
         </FloorInfo>
       </InfoGrid>
       {data.collections ? (

@@ -5,9 +5,9 @@ import {useRouter} from 'next/router';
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 
+import {Routes} from '../../constants';
 import FloorPrice from '../../components/FloorPrice';
 import Text from '../../components/Text';
-import {Routes} from '../../constants';
 import {CollectionRowT} from '../../types';
 
 type Props = {
