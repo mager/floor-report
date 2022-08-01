@@ -31,11 +31,6 @@ const Inner = styled(Block, () => ({
   alignItems: 'center',
 }));
 
-const Floor = styled(Text, () => ({
-  fontWeight: 700,
-  margin: 0,
-}));
-
 const CollectionRow = (props: Props): JSX.Element => {
   const {collection, showFloor, value} = props;
   const [_, theme] = useStyletron();

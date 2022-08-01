@@ -4,11 +4,10 @@ import Image from 'next/image';
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 import {StyledLink} from 'baseui/link';
-import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 
-import Text from '../../components/Text';
 import {CollectionT} from '../../types';
 import {Routes} from '../../constants';
+import FloorPriceSmall from '../FloorPriceSmall';
 
 const Container = styled(Block, () => ({
   display: 'flex',
@@ -73,7 +72,7 @@ const Collection = ({collection}: Props) => {
         <Quantity>x{collection.numOwned}</Quantity>
       </CollectionContainer>
       <FloorContainer>
-        <Text margin={0}>{collection.floor}Ξ</Text>
+        <FloorPriceSmall>{collection.floor}</FloorPriceSmall>
       </FloorContainer>
     </Container>
   );
