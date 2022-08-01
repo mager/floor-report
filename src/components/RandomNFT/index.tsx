@@ -18,6 +18,7 @@ type RandomNFT = {
   imageUrl: string;
   name: string;
   owner: string;
+  ownerName: string;
 };
 
 const Container = styled(Block, ({$theme}) => ({
@@ -38,7 +39,8 @@ const Image = styled('img', ({$theme}) => ({
 }));
 
 const RandomNFT = ({nft}: Props) => {
-  const {collectionName, collectionSlug, imageUrl, name, owner} = nft;
+  const {collectionName, collectionSlug, imageUrl, name, owner, ownerName} =
+    nft;
   const displayName = `${collectionName} - ${name}`;
   return (
     <Block>
@@ -50,7 +52,10 @@ const RandomNFT = ({nft}: Props) => {
           </StyledLink>
         </H5>
         <H6>
-          Owned by <StyledLink href={Routes.ADDRESS(owner)}>{owner}</StyledLink>
+          Owned by{' '}
+          <StyledLink href={Routes.ADDRESS(owner)}>
+            {ownerName || owner}
+          </StyledLink>
         </H6>
       </Container>
     </Block>
