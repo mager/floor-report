@@ -53,12 +53,20 @@ const SearchInput = ({placeholder}: Props) => {
         Root: {
           style: {
             width: '100%',
-            maxWidth: '400px',
+            maxWidth: '300px',
+            border: 'none',
           },
         },
         Input: {
           props: {
             placeholder,
+            overrides: {
+              Input: {
+                style: ({$theme}) => ({
+                  padding: `${$theme.sizing.scale400}`,
+                }),
+              },
+            },
           },
         },
       }}

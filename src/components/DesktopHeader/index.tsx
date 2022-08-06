@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {withStyle, useStyletron} from 'baseui';
+import {styled, withStyle, useStyletron} from 'baseui';
 import {
   HeaderNavigation,
   ALIGN,
@@ -11,11 +11,10 @@ import {StyledLink as Link} from 'baseui/link';
 import {Block} from 'baseui/block';
 import {StyledLink} from 'baseui/link';
 
-import Container from '../Container';
 import ConnectButton from '../ConnectButton';
-import {useAddress} from '../../utils/hooks';
 import SearchInput from '../SearchInput';
 import {Routes} from '../../constants';
+import {useAddress} from '../../utils/hooks';
 
 const AppName = withStyle(StyledLink, ({$theme}) => ({
   fontSize: $theme.sizing.scale1600,
@@ -25,6 +24,39 @@ const AppName = withStyle(StyledLink, ({$theme}) => ({
   padding: `${$theme.sizing.scale800} 0`,
   color: $theme.colors.primary,
 }));
+
+const Container = styled(Block, ({$theme}) => ({
+  margin: 'auto',
+  maxWidth: `${$theme.breakpoints.large - 1}px`,
+  display: 'flex',
+  [$theme.mediaQuery.medium]: {
+    maxWidth: 'auto',
+    display: 'flex',
+    padding: `${$theme.sizing.scale800} ${$theme.sizing.scale1600}`,
+  },
+  [$theme.mediaQuery.small]: {
+    display: 'none',
+  },
+}));
+
+// const Container = styled(Block, ({$theme}) => ({
+//   margin: 'auto',
+//   maxWidth: `${$theme.breakpoints.large - 1}px`,
+//   [$theme.mediaQuery.medium]: {
+//     maxWidth: 'auto',
+//     padding: `${$theme.sizing.scale800} ${$theme.sizing.scale1600}`,
+//   },
+//   [$theme.mediaQuery.large]: {
+//     display: 'block',
+//   },
+//   [$theme.mediaQuery.medium]: {
+//     display: 'block',
+//   },
+//   // Hide on mobile
+//   [$theme.mediaQuery.small]: {
+//     display: 'none',
+//   },
+// }));
 
 const Header = () => {
   const [css, theme] = useStyletron();
@@ -110,15 +142,7 @@ const Header = () => {
               <Link href={Routes.FRENS()}>Frens</Link>
             </NavigationItem>
             <NavigationItem>
-              <ConnectButton
-                label="Connect"
-                // chainStatus="none"
-                // accountStatus={{
-                //   smallScreen: 'avatar',
-                //   largeScreen: 'full',
-                // }}
-                // showBalance={false}
-              />
+              <ConnectButton label="Connect" />
             </NavigationItem>
           </NavigationList>
         </Block>

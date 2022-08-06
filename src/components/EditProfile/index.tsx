@@ -2,19 +2,19 @@ import React from 'react';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
-import {Drawer} from 'baseui/drawer';
-
-import H2 from '../H2';
-import H5 from '../H5';
-import Text from '../Text';
-import ResponsiveImage from '../ResponsiveImage';
 import {Input} from 'baseui/input';
+
+import Drawer from '../../components/Drawer';
+import H2 from '../../components/H2';
+import H5 from '../../components/H5';
+import ResponsiveImage from '../../components/ResponsiveImage';
+import Text from '../../components/Text';
 
 type Props = {
   displayName: string;
   imageSrc: string;
   isOpen: boolean;
-  onClose: () => void;
+  setIsOpen: (isOpen: boolean) => void;
 };
 
 const PhotoContainer = styled(Block, ({$theme}) => ({
@@ -26,11 +26,14 @@ const PhotoInner = styled(Block, ({$theme}) => ({
   alignItems: 'center',
 }));
 
-const EditProfile = ({displayName, imageSrc, isOpen, onClose}: Props) => {
+const EditProfile = ({displayName, imageSrc, isOpen, setIsOpen}: Props) => {
   const [_, theme] = useStyletron();
   return (
-    <Drawer isOpen={isOpen} autoFocus onClose={onClose}>
-      <H2>Edit Profile</H2>
+    <Drawer
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      actions={<H2>Edit Profile</H2>}
+    >
       <PhotoContainer>
         <H5>Photo</H5>
         <PhotoInner>

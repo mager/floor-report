@@ -4,7 +4,8 @@ import Head from 'next/head';
 
 import Body from '../components/Body';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import DesktopHeader from '../components/DesktopHeader';
+import MobileHeader from '../components/MobileHeader';
 import Main from '../components/Main';
 import '../styles/index.css';
 
@@ -30,7 +31,8 @@ export default function FloorReport({Component, pageProps}) {
         />
       </Head>
       <Body>
-        <Header />
+        <DesktopHeader />
+        <MobileHeader />
         <Main>
           <Component {...pageProps} />
         </Main>

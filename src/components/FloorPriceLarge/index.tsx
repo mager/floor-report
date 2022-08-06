@@ -10,6 +10,7 @@ const Component = styled(Block, ({$theme}) => ({
   color: $theme.colors.contentPositive,
   margin: 0,
   letterSpacing: '-3px',
+  paddingRight: $theme.sizing.scale200,
   [$theme.mediaQuery.medium]: {
     fontSize: $theme.sizing.scale1400,
   },

@@ -21,14 +21,20 @@ import {CollectionT} from '../../types';
 import {API_PATH} from '../../utils';
 import AttributeFloors from '../../components/AttributeFloors';
 
-const InfoGrid = styled(Block, () => ({
+const InfoGrid = styled(Block, ({$theme}) => ({
   display: 'flex',
   justifyContent: 'space-between',
-  margin: 0,
+  margin: `${$theme.sizing.scale400} 0`,
 }));
 
 const InfoContainer = styled(Block, () => ({
   display: 'flex',
+}));
+
+const FloorInfo = styled(Block, ({$theme}) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 }));
 
 type Props = {
@@ -68,22 +74,32 @@ const Collection = ({collection, success}: Props) => {
                 href={`https://opensea.io/collection/${collection.slug}`}
               >{`opensea.io/${collection.slug}`}</StyledLink>
             </Text>
-            {numOwners && totalSupply && (
-              <Text margin={0}>
-                <strong>{numOwners}</strong> owners,{' '}
-                <strong>{totalSupply}</strong> tokens
-              </Text>
-            )}
-            <Text margin={0}>
-              Updated <TimeAgo date={collection.updated} />
-            </Text>
           </Block>
         </InfoContainer>
+      </InfoGrid>
+      <FloorInfo>
+        <Block>
+          {numOwners && totalSupply && (
+            <Text margin={0}>
+              <strong>{numOwners}</strong> owners,{' '}
+              <strong>{totalSupply}</strong> tokens
+            </Text>
+          )}
+          <Text margin={0}>
+            Updated <TimeAgo date={collection.updated} />
+          </Text>
+        </Block>
         <Block>
           <FloorPriceLarge>{collection.floor}</FloorPriceLarge>
         </Block>
-      </InfoGrid>
-      <Marquee speed={60} gradient={false}>
+      </FloorInfo>
+      <Marquee
+        speed={75}
+        gradient={false}
+        style={{
+          zIndex: 0,
+        }}
+      >
         <CollectionStatsMarquee collection={collection} />
       </Marquee>
       {!hasAttributes && hasTopNFTs && (

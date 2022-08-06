@@ -4,19 +4,19 @@ import {ConnectButton as RainbowButton} from '@rainbow-me/rainbowkit';
 import {styled} from 'baseui';
 import {Block} from 'baseui/block';
 import {Button} from 'baseui/button';
+import {StyledLink} from 'baseui/link';
 
 type Props = {
   label: string;
 };
 
+const ConnectButtonComponent = styled(Button, ({$theme}) => ({
+  padding: `${$theme.sizing.scale400} ${$theme.sizing.scale600}`,
+}));
+
 const ConnectButtonContainer = styled(Block, ({$theme}) => ({
   display: 'flex',
   flexDirection: 'column',
-}));
-
-const WalletBalance = styled(Block, ({$theme}) => ({
-  color: $theme.colors.contentPositive,
-  fontSize: $theme.sizing.scale500,
 }));
 
 const ConnectButton = ({label}: Props) => {
@@ -43,29 +43,20 @@ const ConnectButton = ({label}: Props) => {
           >
             {(() => {
               if (!mounted || !account || !chain) {
-                return <Button onClick={openConnectModal}>{label}</Button>;
+                return (
+                  <ConnectButtonComponent onClick={openConnectModal}>
+                    {label}
+                  </ConnectButtonComponent>
+                );
               }
 
               return (
                 <Block>
-                  <Button
-                    onClick={openAccountModal}
-                    overrides={{
-                      BaseButton: {
-                        style: ({$theme}) => ({
-                          border: 'none',
-                          width: '100%',
-                          paddingTop: $theme.sizing.scale200,
-                          paddingBottom: $theme.sizing.scale200,
-                        }),
-                      },
-                    }}
-                  >
+                  <ConnectButtonComponent onClick={openAccountModal}>
                     <ConnectButtonContainer>
                       <Block>{account.displayName}</Block>
-                      <WalletBalance>({account.displayBalance})</WalletBalance>
                     </ConnectButtonContainer>
-                  </Button>
+                  </ConnectButtonComponent>
                 </Block>
               );
             })()}

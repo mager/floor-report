@@ -12,7 +12,7 @@ const Container = styled(Block, ({$theme}) => ({
   },
   [$theme.mediaQuery.small]: {
     maxWidth: 'auto',
-    padding: `${$theme.sizing.scale400} ${$theme.sizing.scale800}`,
+    padding: $theme.sizing.scale400,
   },
 }));
 

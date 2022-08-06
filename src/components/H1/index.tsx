@@ -12,9 +12,9 @@ const Component = styled(HeadingXXLarge, ({$theme}) => ({
     lineHeight: $theme.sizing.scale1000,
   },
   [$theme.mediaQuery.small]: {
-    fontSize: $theme.sizing.scale850,
+    fontSize: $theme.sizing.scale1000,
     lineHeight: $theme.sizing.scale850,
-    wordBreak: 'break-all',
+    // wordBreak: 'break-all',
   },
 }));
 

@@ -12,6 +12,7 @@ import Container from '../../components/Container';
 import EditProfile from '../../components/EditProfile';
 import FloorPriceLarge from '../../components/FloorPriceLarge';
 import H1 from '../../components/H1';
+import H4 from '../../components/H4';
 import H5 from '../../components/H5';
 import InlineLink from '../../components/InlineLink';
 import Loading from '../../components/Loading';
@@ -28,7 +29,6 @@ type Props = {
 const InfoGrid = styled(Block, ({$theme}) => ({
   display: 'flex',
   justifyContent: 'space-between',
-  margin: `0 0 ${$theme.sizing.scale800}`,
 }));
 
 const AddYourWallet = styled(Block, () => ({
@@ -44,11 +44,11 @@ const UserInfo = styled(Block, () => ({
   justifyContent: 'center',
 }));
 
-const FloorInfo = styled(Block, () => ({
+const FloorInfo = styled(Block, ({$theme}) => ({
   display: 'flex',
-  alignItems: 'flex-end',
-  justifyContent: 'center',
-  flexDirection: 'column',
+  justifyContent: 'space-between',
+  margin: `0 0 ${$theme.sizing.scale800}`,
+  alignItems: 'center',
 }));
 
 const Updated = styled(Text, ({$theme}) => ({
@@ -111,34 +111,45 @@ export const Address = ({data}: Props): JSX.Element => {
           )}
           <Name>
             <H1 marginTop={theme.sizing.scale500}>{displayName}</H1>
-            <Updated>
-              Updated <TimeAgo date={data.updatedAt} />
-            </Updated>
-            {usersWallet && (
-              <Edit>
-                <InlineLink onClick={() => setIsOpen(true)}>
-                  Edit Profile
-                </InlineLink>
-                <Separator />
-                {loading ? (
-                  <InlineLink disabled>Refreshing...</InlineLink>
-                ) : (
-                  <InlineLink onClick={() => refresh()}>Refresh</InlineLink>
-                )}
-              </Edit>
-            )}
           </Name>
         </UserInfo>
-        <FloorInfo>
-          <FloorPriceLarge>{data.totalETH}</FloorPriceLarge>
-        </FloorInfo>
       </InfoGrid>
+      <FloorInfo>
+        <Block>
+          <Updated>
+            Updated <TimeAgo date={data.updatedAt} />
+          </Updated>
+          {usersWallet && (
+            <Edit>
+              <InlineLink onClick={() => setIsOpen(true)}>
+                Edit Profile
+              </InlineLink>
+              <Separator />
+              {loading ? (
+                <InlineLink disabled>Refreshing...</InlineLink>
+              ) : (
+                <InlineLink onClick={() => refresh()}>Refresh</InlineLink>
+              )}
+            </Edit>
+          )}
+        </Block>
+        <Block>
+          <FloorPriceLarge>{data.totalETH}</FloorPriceLarge>
+        </Block>
+      </FloorInfo>
       {data.collections ? (
-        data.collections.map((collection: CollectionT, i: number) => (
-          <Block key={i}>
-            <Collection collection={collection} />
+        <Block>
+          <Block>
+            <H4>Collections</H4>
           </Block>
-        ))
+          <Block>
+            {data.collections.map((collection: CollectionT, i: number) => (
+              <Block key={i}>
+                <Collection collection={collection} />
+              </Block>
+            ))}
+          </Block>
+        </Block>
       ) : (
         <AddYourWallet>
           <H5>Add your wallet to the Floor Report index</H5>
@@ -153,7 +164,7 @@ export const Address = ({data}: Props): JSX.Element => {
       )}
       <EditProfile
         isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        setIsOpen={setIsOpen}
         imageSrc={imageSrc}
         displayName={displayName}
       />
