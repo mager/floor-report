@@ -6,20 +6,20 @@ import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 import {StyledLink} from 'baseui/link';
 
-import CollectionStatsMarquee from '../../components/StatsMarquee';
+import AttributeFloors from '../../components/AttributeFloors';
 import Container from '../../components/Container';
 import Error from '../../components/Error';
 import FlexGrid, {FlexItem} from '../../components/FlexGrid';
 import FloorPriceLarge from '../../components/FloorPriceLarge';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
-import Loading from '../../components/Loading';
 import Image from '../../components/Image';
+import Loading from '../../components/Loading';
 import ResponsiveImage from '../../components/ResponsiveImage';
+import CollectionStatsMarquee from '../../components/StatsMarquee';
 import Text from '../../components/Text';
 import {CollectionT} from '../../types';
 import {API_PATH} from '../../utils';
-import AttributeFloors from '../../components/AttributeFloors';
 
 const InfoGrid = styled(Block, ({$theme}) => ({
   display: 'flex',

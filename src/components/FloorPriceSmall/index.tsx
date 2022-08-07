@@ -5,6 +5,7 @@ import Text from '../../components/Text';
 
 const Component = styled(Text, ({$theme}) => ({
   fontSize: $theme.sizing.scale1200,
+  fontFamily: 'Spline Sans Mono',
   margin: 0,
   letterSpacing: '-3px',
   [$theme.mediaQuery.medium]: {

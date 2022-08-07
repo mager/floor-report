@@ -39,25 +39,6 @@ const Container = styled(Block, ({$theme}) => ({
   },
 }));
 
-// const Container = styled(Block, ({$theme}) => ({
-//   margin: 'auto',
-//   maxWidth: `${$theme.breakpoints.large - 1}px`,
-//   [$theme.mediaQuery.medium]: {
-//     maxWidth: 'auto',
-//     padding: `${$theme.sizing.scale800} ${$theme.sizing.scale1600}`,
-//   },
-//   [$theme.mediaQuery.large]: {
-//     display: 'block',
-//   },
-//   [$theme.mediaQuery.medium]: {
-//     display: 'block',
-//   },
-//   // Hide on mobile
-//   [$theme.mediaQuery.small]: {
-//     display: 'none',
-//   },
-// }));
-
 const Header = () => {
   const [css, theme] = useStyletron();
   const address = useAddress();

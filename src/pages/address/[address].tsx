@@ -7,7 +7,7 @@ import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 import {Button} from 'baseui/button';
 
-import Collection from '../../components/Collection';
+import ExpandableCollection from '../../components/Collection/expandable';
 import Container from '../../components/Container';
 import EditProfile from '../../components/EditProfile';
 import FloorPriceLarge from '../../components/FloorPriceLarge';
@@ -145,7 +145,7 @@ export const Address = ({data}: Props): JSX.Element => {
           <Block>
             {data.collections.map((collection: CollectionT, i: number) => (
               <Block key={i}>
-                <Collection collection={collection} />
+                <ExpandableCollection collection={collection} />
               </Block>
             ))}
           </Block>

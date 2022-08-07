@@ -11,7 +11,8 @@ import SearchInput from '../../components/SearchInput';
 
 const Container = styled(Block, ({$theme}) => ({
   padding: `${$theme.sizing.scale400} 0`,
-  borderBottom: `1px solid ${$theme.colors.border}`,
+  borderBottom: `1px solid ${$theme.colors.borderOpaque}`,
+  marginBottom: $theme.sizing.scale400,
   // Hide on desktop
   [$theme.mediaQuery.medium]: {
     display: 'none',

@@ -5,7 +5,7 @@ import {HeadingXSmall} from 'baseui/typography';
 
 const Component = styled(HeadingXSmall, ({$theme}) => ({
   letterSpacing: '-1px',
-  margin: 0,
+  margin: `0 0 ${$theme.sizing.scale400}`,
   [$theme.mediaQuery.medium]: {
     fontSize: $theme.sizing.scale700,
     lineHeight: $theme.sizing.scale1000,

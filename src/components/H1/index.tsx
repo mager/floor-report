@@ -13,7 +13,7 @@ const Component = styled(HeadingXXLarge, ({$theme}) => ({
   },
   [$theme.mediaQuery.small]: {
     fontSize: $theme.sizing.scale1000,
-    lineHeight: $theme.sizing.scale850,
+    lineHeight: $theme.sizing.scale1000,
     // wordBreak: 'break-all',
   },
 }));

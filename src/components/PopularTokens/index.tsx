@@ -2,15 +2,12 @@ import React from 'react';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
-import {StyledLink} from 'baseui/link';
 
 import FlexGrid, {FlexItem} from '../../components/FlexGrid';
-import FloorPrice from '../../components/FloorPrice';
 import H4 from '../../components/H4';
 import Image from '../../components/Image';
 import Text from '../../components/Text';
 import type {TopNFTT} from '../../types';
-import {getOpenSeaAttributeURL} from '../../utils';
 
 type Props = {
   topNFTs: TopNFTT[];

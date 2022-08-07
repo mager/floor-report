@@ -7,14 +7,14 @@ const Component = styled(HeadingXLarge, ({$theme}) => ({
   color: $theme.colors.primary,
   letterSpacing: '-1px',
   paddingTop: $theme.sizing.scale200,
-  margin: 0,
+  margin: `0 0 ${$theme.sizing.scale400}`,
   [$theme.mediaQuery.medium]: {
     fontSize: $theme.sizing.scale1200,
     lineHeight: $theme.sizing.scale1000,
   },
   [$theme.mediaQuery.small]: {
-    fontSize: $theme.sizing.scale850,
-    lineHeight: $theme.sizing.scale850,
+    fontSize: $theme.sizing.scale950,
+    lineHeight: $theme.sizing.scale950,
   },
 }));
 
