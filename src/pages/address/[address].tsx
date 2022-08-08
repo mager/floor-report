@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import TimeAgo from 'react-timeago';
 import {useAccount} from 'wagmi';
 import {useRouter} from 'next/router';

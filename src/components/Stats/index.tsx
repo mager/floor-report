@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import TimeAgo from 'react-timeago';
 
 import {Block} from 'baseui/block';

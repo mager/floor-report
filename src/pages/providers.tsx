@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import * as React from 'react';
 import {createThemedStyled, ThemeProvider} from 'baseui';
 import useDarkMode from 'use-dark-mode';
 import {ThemeProvider as NextThemeProvider} from 'next-themes';
@@ -114,7 +114,7 @@ const Providers = ({children}) => {
   const {value} = useDarkMode(false, {storageKey: null, onChange: null});
   const theme = value ? darkTheme : lightTheme;
 
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = React.useState(false);
 
   // Rainbow setup
   const {chains, provider} = configureChains(
@@ -131,7 +131,7 @@ const Providers = ({children}) => {
     provider,
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     setMounted(true);
   }, []);
 

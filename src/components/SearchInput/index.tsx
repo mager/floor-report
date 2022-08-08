@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import * as React from 'react';
 import useSWR from 'swr';
 
 import {Combobox as Component} from 'baseui/combobox';

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import {withStyle} from 'baseui';
 import {StyledSpinnerNext, SIZE} from 'baseui/spinner';

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {ConnectButton as RainbowButton} from '@rainbow-me/rainbowkit';
 
 import {styled} from 'baseui';

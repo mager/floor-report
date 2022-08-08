@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Marquee from 'react-fast-marquee';
 import TimeAgo from 'react-timeago';
 

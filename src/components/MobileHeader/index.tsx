@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import * as React from 'react';
 
 import {styled, useStyletron, withStyle} from 'baseui';
 
@@ -32,19 +32,15 @@ const Hamburger = styled(Block, ({$theme}) => ({
   padding: `0 ${$theme.sizing.scale400}`,
 }));
 
-const LogoContainer = styled(Block, ({$theme}) => ({
+const LogoContainer = styled(Block, ({}) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
 }));
 
-const NavContainer = styled(Block, ({$theme}) => ({
-  borderBottom: `1px solid ${$theme.colors.border}`,
-}));
-
 const MobileHeader = () => {
   const [_, theme] = useStyletron();
-  const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState(false);
+  const [isHeaderMenuOpen, setIsHeaderMenuOpen] = React.useState(false);
 
   return (
     <Container>
@@ -55,7 +51,7 @@ const MobileHeader = () => {
         <SearchInput placeholder="Search for a collection" />
         <Hamburger>
           <Menu
-            size={24}
+            size={36}
             onClick={() => setIsHeaderMenuOpen(!isHeaderMenuOpen)}
           />
         </Hamburger>

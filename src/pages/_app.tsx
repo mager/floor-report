@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import * as React from 'react';
 import {Provider as StyletronProvider} from 'styletron-react';
 import Head from 'next/head';
 
@@ -13,8 +13,8 @@ import Providers from './providers';
 import {styletron} from '../styletron';
 
 export default function FloorReport({Component, pageProps}) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
     setMounted(true);
   }, []);
 

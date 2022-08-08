@@ -1,8 +1,6 @@
-import React, {useCallback, useEffect} from 'react';
+import * as React from 'react';
 
-import {styled, useStyletron, withStyle} from 'baseui';
-import {Block} from 'baseui/block';
-import ChevronRight from 'baseui/icon/chevron-right';
+import {useStyletron, withStyle} from 'baseui';
 import {StyledLink as Link} from 'baseui/link';
 
 import ConnectButton from '../../components/ConnectButton';

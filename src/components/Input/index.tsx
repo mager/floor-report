@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import * as React from 'react';
 import {Input as Component} from 'baseui/input';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 const Input = ({onDoneTyping, placeholder}: Props) => {
   const [value, setValue] = React.useState('');
 
-  useEffect(() => {
+  React.useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       onDoneTyping(value);
     }, 500);

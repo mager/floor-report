@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import * as React from 'react';
 
 import {styled} from 'baseui';
 import {Block} from 'baseui/block';
@@ -25,13 +25,13 @@ type Props = {
 };
 
 const Drawer = ({actions, children, isOpen, setIsOpen}: Props) => {
-  const escFunction = useCallback((event) => {
+  const escFunction = React.useCallback((event) => {
     if (event.key === 'Escape') {
       setIsOpen(false);
     }
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.addEventListener('keydown', escFunction, false);
 
     return () => {

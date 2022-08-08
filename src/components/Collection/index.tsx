@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
@@ -55,15 +55,6 @@ const Quantity = styled(Block, ({$theme}) => ({
   right: `-${$theme.sizing.scale200}`,
 }));
 
-// const NFTs = styled(Block, ({$theme}) => ({
-//   display: 'flex',
-//   flexWrap: 'wrap',
-// }));
-
-// const NFT = styled(Block, ({$theme}) => ({
-//   marginRight: $theme.sizing.scale400,
-// }));
-
 const Collection = ({collection}: Props) => {
   const [_, theme] = useStyletron();
   return (
@@ -86,15 +77,6 @@ const Collection = ({collection}: Props) => {
           <FloorPriceSmall>{collection.floor}</FloorPriceSmall>
         </FloorContainer>
       </CollectionContainer>
-      {/* <NFTs>
-        {collection.nfts.map((nft) => (
-          <Block key={nft.imageUrl}>
-            <NFT>
-              <Image size="32px" src={nft.imageUrl} name={nft.name} />
-            </NFT>
-          </Block>
-        ))}
-      </NFTs> */}
     </Container>
   );
 };
