@@ -111,14 +111,14 @@ export const Address = ({data}: Props): JSX.Element => {
           )}
           <Name>
             <H1 marginTop={theme.sizing.scale500}>{displayName}</H1>
+            <Updated>
+              Updated <TimeAgo date={data.updatedAt} />
+            </Updated>
           </Name>
         </UserInfo>
       </InfoGrid>
       <FloorInfo>
         <Block>
-          <Updated>
-            Updated <TimeAgo date={data.updatedAt} />
-          </Updated>
           {usersWallet && (
             <Edit>
               <InlineLink onClick={() => setIsOpen(true)}>
