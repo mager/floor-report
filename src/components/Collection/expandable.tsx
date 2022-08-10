@@ -12,10 +12,7 @@ import NFT from '../../components/NFT';
 import Quantity from '../../components/Quantity';
 import {CollectionT} from '../../types';
 
-const Container = styled(Block, ({$theme}) => ({
-  marginBottom: $theme.sizing.scale400,
-  paddingBottom: $theme.sizing.scale400,
-}));
+const Container = styled(Block, ({$theme}) => ({}));
 
 const CollectionContainer = styled(Block, () => ({
   display: 'flex',
@@ -69,6 +66,7 @@ const ExpandableCollection = ({collection}: Props) => {
                 paddingRight: 0,
                 paddingTop: theme.sizing.scale400,
                 paddingBottom: theme.sizing.scale400,
+                backgroundColor: theme.colors.backgroundPrimary,
               },
             },
             ToggleIcon: {
