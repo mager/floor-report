@@ -26,12 +26,14 @@ export type NFTT = {
   imageUrl: string;
   tokenId: string;
   traits: Trait[];
+  floor: number;
 };
 
 export type CollectionT = {
   name: string;
   slug: string;
   floor: number;
+  value: number;
   thumb: string;
   updated: Date;
   numOwned: number;

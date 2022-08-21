@@ -34,8 +34,6 @@ const Name = styled(Block, () => ({
 }));
 
 const FloorContainer = styled(Block, () => ({
-  width: '72px',
-  flex: '0 0 72px',
   textAlign: 'right',
 }));
 
@@ -103,11 +101,11 @@ const ExpandableCollection = ({collection}: Props) => {
               <Details>
                 <Name>
                   <StyledLink href={Routes.COLLECTION(collection.slug)}>
-                    {collection.name}
+                    {collection.name} ({collection.floor}ETH)
                   </StyledLink>
                 </Name>
                 <FloorContainer>
-                  <FloorPriceSmall>{collection.floor}</FloorPriceSmall>
+                  <FloorPriceSmall>{collection.value}</FloorPriceSmall>
                 </FloorContainer>
               </Details>
             </CollectionContainer>

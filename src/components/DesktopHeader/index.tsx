@@ -14,7 +14,7 @@ import {StyledLink} from 'baseui/link';
 import ConnectButton from '../ConnectButton';
 import SearchInput from '../SearchInput';
 import {Routes} from '../../constants';
-import {useAddress} from '../../utils/hooks';
+import useAddress from '../../utils/hooks/useAddress';
 
 const AppName = withStyle(StyledLink, ({$theme}) => ({
   fontSize: $theme.sizing.scale1600,

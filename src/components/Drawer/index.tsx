@@ -7,7 +7,10 @@ import ChevronRight from 'baseui/icon/chevron-right';
 
 const Container = styled(Block, ({$theme}) => ({
   minWidth: '300px',
-  padding: $theme.sizing.scale400,
+  paddingTop: $theme.sizing.scale400,
+  paddingBottom: $theme.sizing.scale400,
+  paddingLeft: $theme.sizing.scale400,
+  paddingRight: $theme.sizing.scale400,
 }));
 
 const ActionContainer = styled(Block, ({$theme}) => ({

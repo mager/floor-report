@@ -52,7 +52,6 @@ const FloorInfo = styled(Block, ({$theme}) => ({
 }));
 
 const Updated = styled(Text, ({$theme}) => ({
-  margin: 0,
   marginTop: $theme.sizing.scale200,
   fontSize: $theme.sizing.scale550,
 }));

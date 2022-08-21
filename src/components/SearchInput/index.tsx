@@ -63,7 +63,10 @@ const SearchInput = ({placeholder}: Props) => {
             overrides: {
               Input: {
                 style: ({$theme}) => ({
-                  padding: `${$theme.sizing.scale400}`,
+                  paddingTop: $theme.sizing.scale400,
+                  paddingBottom: $theme.sizing.scale400,
+                  paddingLeft: $theme.sizing.scale400,
+                  paddingRight: $theme.sizing.scale400,
                 }),
               },
             },

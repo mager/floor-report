@@ -5,6 +5,7 @@ import {Block} from 'baseui/block';
 
 import Image from '../../components/Image';
 import {NFTT} from '../../types';
+import FloorPrice from '../FloorPriceXSmall';
 
 type Props = {
   nft: NFTT;
@@ -22,6 +23,7 @@ const Details = styled(Block, ({$theme}) => ({
   display: 'flex',
   marginLeft: $theme.sizing.scale200,
   justifyContent: 'space-between',
+  alignItems: 'center',
 }));
 
 const NFT = ({nft}: Props) => {
@@ -31,7 +33,9 @@ const NFT = ({nft}: Props) => {
       <Image size="32px" src={nft.imageUrl} name={nft.name} />
       <Details>
         <Block>{displayName}</Block>
-        <Block>...</Block>
+        <Block>
+          <FloorPrice>{nft.floor}</FloorPrice>
+        </Block>
       </Details>
     </Component>
   );
