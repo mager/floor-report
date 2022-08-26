@@ -39,7 +39,7 @@ const FloorContainer = styled(Block, () => ({
 
 const Thumb = styled(Block, ({$theme}) => ({
   position: 'relative',
-  marginRight: $theme.sizing.scale200,
+  marginRight: $theme.sizing.scale400,
 }));
 
 type Props = {

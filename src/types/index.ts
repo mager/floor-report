@@ -80,6 +80,7 @@ export type GetAddressRespT = {
   collections: CollectionT[];
   nfts: NFTT[];
   totalETH: number;
+  totalUSD: number;
   updatedAt: Date;
   user: UserT;
   updating: boolean;

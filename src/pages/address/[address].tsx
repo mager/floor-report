@@ -10,6 +10,7 @@ import {Button} from 'baseui/button';
 import ExpandableCollection from '../../components/Collection/expandable';
 import Container from '../../components/Container';
 import EditProfile from '../../components/EditProfile';
+import FloorPriceUSD from '../../components/FloorPriceUSD';
 import FloorPriceLarge from '../../components/FloorPriceLarge';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
@@ -71,6 +72,10 @@ const Updating = () => {
   );
 };
 
+const Value = styled(Block, ({$theme}) => ({
+  marginTop: $theme.sizing.scale600,
+}));
+
 export const Address = ({data}: Props): JSX.Element => {
   const {push, query, reload} = useRouter();
   const [_, theme] = useStyletron();
@@ -78,6 +83,7 @@ export const Address = ({data}: Props): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [isUpdating, setIsUpdating] = React.useState(false);
+  const [showETH, setShowETH] = React.useState(false);
 
   const refresh = async (a?: string) => {
     const address = a || account.address.toLowerCase();
@@ -119,6 +125,10 @@ export const Address = ({data}: Props): JSX.Element => {
   const imageSrc = getFrenPhoto(address);
 
   const hasCollections = data.collections;
+  const totalUSD = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(data.totalUSD);
 
   return (
     <Container>
@@ -163,9 +173,13 @@ export const Address = ({data}: Props): JSX.Element => {
           )}
         </Block>
         {hasCollections && (
-          <Block>
-            <FloorPriceLarge>{data.totalETH}</FloorPriceLarge>
-          </Block>
+          <Value onClick={() => setShowETH(!showETH)}>
+            {showETH ? (
+              <FloorPriceLarge>{data.totalETH}</FloorPriceLarge>
+            ) : (
+              <FloorPriceUSD>{totalUSD}</FloorPriceUSD>
+            )}
+          </Value>
         )}
       </FloorInfo>
       {data.collections ? (

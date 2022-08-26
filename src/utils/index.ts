@@ -7,7 +7,7 @@ export const swrOptions = {
 };
 
 export const API_PATH =
-  process.env.NODE_ENV === 'development'
+  process.env.NODE_ENV === 'development' && !process.env.FORCE_PROD
     ? 'http://localhost:8081'
     : 'https://keiko.floor.report';
 
