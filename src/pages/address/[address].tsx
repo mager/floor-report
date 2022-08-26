@@ -62,32 +62,51 @@ const Edit = styled(Block, ({$theme}) => ({
   fontSize: $theme.sizing.scale550,
 }));
 
+const Updating = () => {
+  return (
+    <Container>
+      <H4>Updating your wallet... come back in a few.</H4>
+      <Loading />
+    </Container>
+  );
+};
+
 export const Address = ({data}: Props): JSX.Element => {
-  const {push, query} = useRouter();
+  const {push, query, reload} = useRouter();
   const [_, theme] = useStyletron();
   const account = useAccount();
   const [isOpen, setIsOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [isUpdating, setIsUpdating] = React.useState(false);
 
-  const refresh = async () => {
+  const refresh = async (a?: string) => {
+    const address = a || account.address.toLowerCase();
     setLoading(true);
-    const resp = await fetch(`/api/user/${account.address.toLowerCase()}`, {
+    await fetch(`/api/user/${address}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
     });
-
     setLoading(false);
-    push(`/address/${account.address.toLowerCase()}`);
   };
 
   if (!data) {
     return <Loading />;
   }
 
+  // While we are adding the wallet to the database, show the user a updating message
+  const updating = data.updating;
+  if (updating) {
+    return <Updating />;
+  }
+
   if (data.collections?.length === 0) {
-    return <Text>No collections found</Text>;
+    return (
+      <Container>
+        <Text>No collections found</Text>
+      </Container>
+    );
   }
 
   const user: UserT = data.user;
@@ -98,6 +117,8 @@ export const Address = ({data}: Props): JSX.Element => {
 
   const displayName = getName(user, data);
   const imageSrc = getFrenPhoto(address);
+
+  const hasCollections = data.collections;
 
   return (
     <Container>
@@ -110,9 +131,11 @@ export const Address = ({data}: Props): JSX.Element => {
           )}
           <Name>
             <H1 marginTop={theme.sizing.scale500}>{displayName}</H1>
-            <Updated>
-              Updated <TimeAgo date={data.updatedAt} />
-            </Updated>
+            {hasCollections && (
+              <Updated>
+                Updated <TimeAgo date={data.updatedAt} />
+              </Updated>
+            )}
           </Name>
         </UserInfo>
       </InfoGrid>
@@ -127,14 +150,23 @@ export const Address = ({data}: Props): JSX.Element => {
               {loading ? (
                 <InlineLink disabled>Refreshing...</InlineLink>
               ) : (
-                <InlineLink onClick={() => refresh()}>Refresh</InlineLink>
+                <InlineLink
+                  onClick={() => {
+                    refresh();
+                    push(`/address/${account.address.toLowerCase()}`);
+                  }}
+                >
+                  Refresh
+                </InlineLink>
               )}
             </Edit>
           )}
         </Block>
-        <Block>
-          <FloorPriceLarge>{data.totalETH}</FloorPriceLarge>
-        </Block>
+        {hasCollections && (
+          <Block>
+            <FloorPriceLarge>{data.totalETH}</FloorPriceLarge>
+          </Block>
+        )}
       </FloorInfo>
       {data.collections ? (
         <Block>
@@ -149,15 +181,26 @@ export const Address = ({data}: Props): JSX.Element => {
             ))}
           </Block>
         </Block>
+      ) : isUpdating ? (
+        <Updating />
       ) : (
         <AddYourWallet>
-          <H5>Add your wallet to the Floor Report index</H5>
+          <H5>Add your wallet to Floor Report</H5>
           <Text marginBottom={theme.sizing.scale800}>
             We&rsquo;ll fetch the latest floor prices for your NFTs from OpenSea
             every 12 hours.
           </Text>
           <Block marginBottom={theme.sizing.scale800}>
-            <Button disabled>Add me to the index (COMING SOON)</Button>
+            <Button
+              isLoading={loading}
+              disabled={loading}
+              onClick={async () => {
+                setIsUpdating(true);
+                await refresh(address);
+              }}
+            >
+              Add me to the index
+            </Button>
           </Block>
         </AddYourWallet>
       )}

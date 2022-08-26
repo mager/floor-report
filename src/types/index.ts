@@ -82,6 +82,7 @@ export type GetAddressRespT = {
   totalETH: number;
   updatedAt: Date;
   user: UserT;
+  updating: boolean;
 };
 
 export type HomeT = {

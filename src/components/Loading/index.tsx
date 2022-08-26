@@ -9,6 +9,7 @@ const Component = withStyle(StyledSpinnerNext, ({$theme}) => ({
   margin: `${$theme.sizing.scale1600} auto`,
   display: 'block',
   padding: `${$theme.sizing.scale800}`,
+  borderTopColor: '#75E2FF',
 }));
 
 const Loading = () => {
