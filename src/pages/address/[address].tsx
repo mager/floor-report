@@ -7,11 +7,10 @@ import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 import {Button} from 'baseui/button';
 
+import AddressMarquee from '../../components/AddressMarquee';
 import ExpandableCollection from '../../components/Collection/expandable';
 import Container from '../../components/Container';
 import EditProfile from '../../components/EditProfile';
-import FloorPriceUSD from '../../components/FloorPriceUSD';
-import FloorPriceLarge from '../../components/FloorPriceLarge';
 import H1 from '../../components/H1';
 import H4 from '../../components/H4';
 import H5 from '../../components/H5';
@@ -72,10 +71,6 @@ const Updating = () => {
   );
 };
 
-const Value = styled(Block, ({$theme}) => ({
-  marginTop: $theme.sizing.scale600,
-}));
-
 export const Address = ({data}: Props): JSX.Element => {
   const {push, query, reload} = useRouter();
   const [_, theme] = useStyletron();
@@ -83,7 +78,7 @@ export const Address = ({data}: Props): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [isUpdating, setIsUpdating] = React.useState(false);
-  const [showETH, setShowETH] = React.useState(false);
+  const [showETH, setShowETH] = React.useState(true);
 
   const refresh = async (a?: string) => {
     const address = a || account.address.toLowerCase();
@@ -172,15 +167,7 @@ export const Address = ({data}: Props): JSX.Element => {
             </Edit>
           )}
         </Block>
-        {hasCollections && (
-          <Value onClick={() => setShowETH(!showETH)}>
-            {showETH ? (
-              <FloorPriceLarge>{data.totalETH}</FloorPriceLarge>
-            ) : (
-              <FloorPriceUSD>{totalUSD}</FloorPriceUSD>
-            )}
-          </Value>
-        )}
+        {hasCollections && <AddressMarquee data={data} />}
       </FloorInfo>
       {data.collections ? (
         <Block>

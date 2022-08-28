@@ -93,15 +93,8 @@ const Collection = ({collection, success}: Props) => {
           <FloorPriceLarge>{collection.floor}</FloorPriceLarge>
         </Block>
       </FloorInfo>
-      <Marquee
-        speed={75}
-        gradient={false}
-        style={{
-          zIndex: 0,
-        }}
-      >
-        <CollectionStatsMarquee collection={collection} />
-      </Marquee>
+
+      <CollectionStatsMarquee collection={collection} />
       {!hasAttributes && hasTopNFTs && (
         <Block>
           <H4 marginBottom={theme.sizing.scale800}>Popular tokens</H4>

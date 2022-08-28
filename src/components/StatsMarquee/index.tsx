@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Marquee from 'react-fast-marquee';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
@@ -62,11 +63,19 @@ const CollectionStatsMarquee = (props: Props) => {
   s += ' ';
 
   return (
-    <Wrapper>
-      <Component>
-        <H5 margin={0}>{s}</H5>
-      </Component>
-    </Wrapper>
+    <Marquee
+      speed={85}
+      gradient={false}
+      style={{
+        zIndex: 0,
+      }}
+    >
+      <Wrapper>
+        <Component>
+          <H5 margin={0}>{s}</H5>
+        </Component>
+      </Wrapper>
+    </Marquee>
   );
 };
 
