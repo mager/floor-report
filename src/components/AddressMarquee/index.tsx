@@ -13,7 +13,6 @@ type Props = {
 };
 
 const Wrapper = styled(Block, ({$theme}) => ({
-  marginTop: $theme.sizing.scale600,
   padding: `${$theme.sizing.scale100} 0`,
   width: '100%',
 }));

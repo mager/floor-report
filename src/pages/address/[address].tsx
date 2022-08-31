@@ -44,13 +44,6 @@ const UserInfo = styled(Block, () => ({
   justifyContent: 'center',
 }));
 
-const FloorInfo = styled(Block, ({$theme}) => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-  margin: `0 0 ${$theme.sizing.scale800}`,
-  alignItems: 'center',
-}));
-
 const Updated = styled(Text, ({$theme}) => ({
   marginTop: $theme.sizing.scale200,
   fontSize: $theme.sizing.scale550,
@@ -60,6 +53,7 @@ const Name = styled(Block, ({$theme}) => ({}));
 
 const Edit = styled(Block, ({$theme}) => ({
   fontSize: $theme.sizing.scale550,
+  marginTop: $theme.sizing.scale200,
 }));
 
 const Updating = () => {
@@ -141,34 +135,30 @@ export const Address = ({data}: Props): JSX.Element => {
                 Updated <TimeAgo date={data.updatedAt} />
               </Updated>
             )}
+            {usersWallet && (
+              <Edit>
+                <InlineLink onClick={() => setIsOpen(true)}>
+                  Edit Profile
+                </InlineLink>
+                <Separator />
+                {loading ? (
+                  <InlineLink disabled>Refreshing...</InlineLink>
+                ) : (
+                  <InlineLink
+                    onClick={() => {
+                      refresh();
+                      push(`/address/${account.address.toLowerCase()}`);
+                    }}
+                  >
+                    Refresh
+                  </InlineLink>
+                )}
+              </Edit>
+            )}
           </Name>
         </UserInfo>
       </InfoGrid>
-      <FloorInfo>
-        <Block>
-          {usersWallet && (
-            <Edit>
-              <InlineLink onClick={() => setIsOpen(true)}>
-                Edit Profile
-              </InlineLink>
-              <Separator />
-              {loading ? (
-                <InlineLink disabled>Refreshing...</InlineLink>
-              ) : (
-                <InlineLink
-                  onClick={() => {
-                    refresh();
-                    push(`/address/${account.address.toLowerCase()}`);
-                  }}
-                >
-                  Refresh
-                </InlineLink>
-              )}
-            </Edit>
-          )}
-        </Block>
-        {hasCollections && <AddressMarquee data={data} />}
-      </FloorInfo>
+      <Block>{hasCollections && <AddressMarquee data={data} />}</Block>
       {data.collections ? (
         <Block>
           <Block>
