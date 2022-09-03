@@ -33,7 +33,7 @@ const AddressMarquee = ({data: {totalETH, totalUSD}}: Props) => {
 
   return (
     <Marquee
-      speed={85}
+      speed={90}
       gradient={false}
       style={{
         zIndex: 0,

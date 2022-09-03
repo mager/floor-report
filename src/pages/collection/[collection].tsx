@@ -16,7 +16,7 @@ import H4 from '../../components/H4';
 import Image from '../../components/Image';
 import Loading from '../../components/Loading';
 import ResponsiveImage from '../../components/ResponsiveImage';
-import CollectionStatsMarquee from '../../components/StatsMarquee';
+import StatsMarquee from '../../components/StatsMarqueeV2';
 import Text from '../../components/Text';
 import {CollectionT} from '../../types';
 import {API_PATH} from '../../utils';
@@ -94,11 +94,11 @@ const Collection = ({collection, success}: Props) => {
         </Block>
       </FloorInfo>
 
-      <CollectionStatsMarquee collection={collection} />
+      <StatsMarquee collection={collection} />
       {!hasAttributes && hasTopNFTs && (
         <Block>
           <H4 marginBottom={theme.sizing.scale800}>Popular tokens</H4>
-          <FlexGrid>
+          <FlexGrid columns={[2, 4, 6, 6]}>
             {topNFTs.map((nft) => (
               <FlexItem key={nft.name}>
                 <Image name={nft.name} size="100%" src={nft.image} />

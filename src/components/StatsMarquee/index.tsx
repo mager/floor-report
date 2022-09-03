@@ -18,7 +18,7 @@ const Wrapper = styled(Block, ({$theme}) => ({
 
 const Component = styled(Block, ({$theme}) => ({
   padding: $theme.sizing.scale800,
-  background: $theme.colors.background,
+  background: $theme.colors.primary400,
 }));
 
 const CollectionStatsMarquee = (props: Props) => {
@@ -64,7 +64,7 @@ const CollectionStatsMarquee = (props: Props) => {
 
   return (
     <Marquee
-      speed={85}
+      speed={90}
       gradient={false}
       style={{
         zIndex: 0,

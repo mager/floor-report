@@ -35,7 +35,7 @@ const Frens = ({frens, success}: Props) => {
     <Container>
       <H1 marginBottom={theme.sizing.scale800}>Frens</H1>
       {users && (
-        <FlexGrid>
+        <FlexGrid columns={[2, 2, 6, 6]}>
           {users.map((user) => (
             <FlexItem key={user.name}>
               {user.photo && (

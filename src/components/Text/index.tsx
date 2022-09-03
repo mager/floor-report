@@ -9,8 +9,19 @@ const Paragraph = styled(ParagraphMedium, ({$theme}) => ({
   marginBottom: 0,
 }));
 
+const ItalicParagraph = styled(ParagraphMedium, ({$theme}) => ({
+  fontFamily: 'Titillium Web',
+  fontSize: '16px',
+  marginBottom: 0,
+  fontStyle: 'italic',
+}));
+
 const Text = ({children, ...props}) => {
-  return <Paragraph {...props}>{children}</Paragraph>;
+  return props.italic ? (
+    <ItalicParagraph {...props}>{children}</ItalicParagraph>
+  ) : (
+    <Paragraph {...props}>{children}</Paragraph>
+  );
 };
 
 export default Text;

@@ -12,10 +12,10 @@ const Component = styled(Block, ({$theme}) => ({
   margin: 0,
   letterSpacing: '-3px',
   [$theme.mediaQuery.medium]: {
-    fontSize: $theme.sizing.scale900,
+    fontSize: $theme.sizing.scale800,
   },
   [$theme.mediaQuery.small]: {
-    fontSize: $theme.sizing.scale800,
+    fontSize: $theme.sizing.scale700,
   },
 }));
 
@@ -27,7 +27,7 @@ const ETH = styled('span', ({$theme}) => ({
 const FloorPrice = ({children}) => {
   return (
     <Component>
-      {children}
+      {children.toLocaleString()}
       <ETH>Ξ</ETH>
     </Component>
   );
