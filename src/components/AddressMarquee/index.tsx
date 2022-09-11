@@ -4,9 +4,10 @@ import Marquee from 'react-fast-marquee';
 import {styled} from 'baseui';
 import {Block} from 'baseui/block';
 
-import {GetAddressRespT} from '../../types';
-import FloorPriceUSD from '../FloorPriceUSD';
 import FloorPriceLarge from '../../components/FloorPriceLarge';
+import FloorPriceUSD from '../../components/FloorPriceUSD';
+import {GetAddressRespT} from '../../types';
+import {formatUSD} from '../../utils';
 
 type Props = {
   data: GetAddressRespT;
@@ -26,10 +27,7 @@ const Component = styled(Block, ({$theme}) => ({
 }));
 
 const AddressMarquee = ({data: {totalETH, totalUSD}}: Props) => {
-  const totalUSDFmt = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(totalUSD);
+  const totalUSDFmt = formatUSD(totalUSD);
 
   return (
     <Marquee

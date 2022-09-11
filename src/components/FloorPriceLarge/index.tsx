@@ -15,7 +15,7 @@ const Component = styled(Block, ({$theme}) => ({
     fontSize: $theme.sizing.scale1400,
   },
   [$theme.mediaQuery.small]: {
-    fontSize: $theme.sizing.scale1200,
+    fontSize: $theme.sizing.scale1000,
   },
 }));
 

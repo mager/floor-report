@@ -59,3 +59,9 @@ export const getOpenSeaAttributeURL = (slug: string, attribute: AttributeT) => {
   const url = `${baseURL}/${slug}/${params}`;
   return url;
 };
+
+export const formatUSD = (totalUSD: number) =>
+  new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(totalUSD);

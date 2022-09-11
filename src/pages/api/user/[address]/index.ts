@@ -30,7 +30,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         method: 'POST',
       });
       const resp = await response.json();
-
       res.status(200).json(resp);
     } catch (error) {
       console.error(error);

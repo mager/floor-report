@@ -1,5 +1,4 @@
-import * as React from 'react';
-import Marquee from 'react-fast-marquee';
+import React, {useState} from 'react';
 import TimeAgo from 'react-timeago';
 
 import {styled, useStyletron} from 'baseui';
@@ -19,7 +18,8 @@ import ResponsiveImage from '../../components/ResponsiveImage';
 import StatsMarquee from '../../components/StatsMarqueeV2';
 import Text from '../../components/Text';
 import {CollectionT} from '../../types';
-import {API_PATH} from '../../utils';
+import {API_PATH, formatUSD} from '../../utils';
+import FloorPriceUSD from '../../components/FloorPriceUSD';
 
 const InfoGrid = styled(Block, ({$theme}) => ({
   display: 'flex',
@@ -44,6 +44,7 @@ type Props = {
 
 const Collection = ({collection, success}: Props) => {
   const [_, theme] = useStyletron();
+  const [showETHPrice, setShowETHPrice] = useState(true);
   if (!success) {
     return <Error message="Failed to fetch collection" />;
   }
@@ -89,8 +90,12 @@ const Collection = ({collection, success}: Props) => {
             Updated <TimeAgo date={collection.updated} />
           </Text>
         </Block>
-        <Block>
-          <FloorPriceLarge>{collection.floor}</FloorPriceLarge>
+        <Block onClick={() => setShowETHPrice(!showETHPrice)}>
+          {showETHPrice ? (
+            <FloorPriceLarge>{collection.floorETH}</FloorPriceLarge>
+          ) : (
+            <FloorPriceUSD>{formatUSD(collection.floorUSD)}</FloorPriceUSD>
+          )}
         </Block>
       </FloorInfo>
 
