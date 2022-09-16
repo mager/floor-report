@@ -4,6 +4,7 @@ import TimeAgo from 'react-timeago';
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
 import {StyledLink} from 'baseui/link';
+import {useTheme} from 'next-themes';
 
 import AttributeFloors from '../../components/AttributeFloors';
 import Container from '../../components/Container';
@@ -37,6 +38,11 @@ const FloorInfo = styled(Block, ({$theme}) => ({
   alignItems: 'center',
 }));
 
+const OpenSeaLink = styled(Block, ({$theme}) => ({
+  display: 'flex',
+  alignItems: 'center',
+}));
+
 type Props = {
   collection: CollectionT;
   success: boolean;
@@ -44,6 +50,8 @@ type Props = {
 
 const Collection = ({collection, success}: Props) => {
   const [_, theme] = useStyletron();
+  const {resolvedTheme} = useTheme();
+
   const [showETHPrice, setShowETHPrice] = useState(true);
   if (!success) {
     return <Error message="Failed to fetch collection" />;
@@ -61,6 +69,8 @@ const Collection = ({collection, success}: Props) => {
   const hasTopNFTs = topNFTs && topNFTs.length > 0;
   const hasAttributes = attributes && attributes.length > 0;
 
+  const openSeaCollectionLink = `https://opensea.io/collection/${collection.slug}`;
+
   return (
     <Container>
       <InfoGrid>
@@ -70,11 +80,20 @@ const Collection = ({collection, success}: Props) => {
           </Block>
           <Block paddingRight={theme.sizing.scale800}>
             <H1>{collection.name}</H1>
-            <Text margin={0}>
-              <StyledLink
-                href={`https://opensea.io/collection/${collection.slug}`}
-              >{`opensea.io/${collection.slug}`}</StyledLink>
-            </Text>
+            <OpenSeaLink>
+              <a href={openSeaCollectionLink} target="_blank" rel="noreferrer">
+                <Image
+                  src={`/opensea-${resolvedTheme}.svg`}
+                  size="24px"
+                  name="OpenSea"
+                />
+              </a>
+              <Text marginTop="-5px" marginLeft="4px">
+                <StyledLink
+                  href={openSeaCollectionLink}
+                >{`opensea.io/${collection.slug}`}</StyledLink>
+              </Text>
+            </OpenSeaLink>
           </Block>
         </InfoContainer>
       </InfoGrid>
@@ -122,6 +141,7 @@ const Collection = ({collection, success}: Props) => {
 
 export async function getServerSideProps(context) {
   const url = `${API_PATH}/collection/${context.query.collection}`;
+
   const res = await fetch(url);
   if (res.status !== 200) {
     return {
