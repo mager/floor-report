@@ -66,13 +66,12 @@ const Updating = () => {
 };
 
 export const Address = ({data}: Props): JSX.Element => {
-  const {push, query, reload} = useRouter();
+  const {push} = useRouter();
   const [_, theme] = useStyletron();
   const account = useAccount();
   const [isOpen, setIsOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [isUpdating, setIsUpdating] = React.useState(false);
-  const [showETH, setShowETH] = React.useState(true);
 
   const refresh = async (a?: string) => {
     const address = a || account.address.toLowerCase();
@@ -114,10 +113,7 @@ export const Address = ({data}: Props): JSX.Element => {
   const imageSrc = getFrenPhoto(address);
 
   const hasCollections = data.collections;
-  const totalUSD = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(data.totalUSD);
+  const settings = user.settings;
 
   return (
     <Container>
@@ -196,6 +192,7 @@ export const Address = ({data}: Props): JSX.Element => {
         </AddYourWallet>
       )}
       <EditProfile
+        settings={settings}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         imageSrc={imageSrc}

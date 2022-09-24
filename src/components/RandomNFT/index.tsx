@@ -18,7 +18,7 @@ type RandomNFT = {
   imageUrl: string;
   name: string;
   owner: string;
-  ownerName: string;
+  ownerName?: string;
 };
 
 const Container = styled(Block, ({$theme}) => ({

@@ -2,11 +2,13 @@ import * as React from 'react';
 import {createThemedStyled, ThemeProvider} from 'baseui';
 import useDarkMode from 'use-dark-mode';
 import {ThemeProvider as NextThemeProvider} from 'next-themes';
+import {SnackbarProvider} from 'baseui/snackbar';
 import '@rainbow-me/rainbowkit/styles.css';
 import {getDefaultWallets, RainbowKitProvider} from '@rainbow-me/rainbowkit';
 import {chain, configureChains, createClient, WagmiConfig} from 'wagmi';
 import {alchemyProvider} from 'wagmi/providers/alchemy';
 import {publicProvider} from 'wagmi/providers/public';
+
 import {createLightTheme, createDarkTheme} from 'baseui';
 import {Theme} from 'baseui/theme';
 
@@ -145,7 +147,9 @@ const Providers = ({children}) => {
         }}
       >
         <ThemeProvider theme={theme as CustomThemeT}>
-          <NextThemeProvider>{children}</NextThemeProvider>
+          <NextThemeProvider>
+            <SnackbarProvider>{children}</SnackbarProvider>
+          </NextThemeProvider>
         </ThemeProvider>
       </RainbowKitProvider>
     </WagmiConfig>

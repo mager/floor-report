@@ -73,6 +73,11 @@ export type UserT = {
   opensea: string;
   photo: boolean;
   twitter: string;
+  settings: UserSettingsT;
+};
+
+export type UserSettingsT = {
+  hide0ETHCollections: boolean;
 };
 
 export type GetAddressRespT = {

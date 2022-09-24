@@ -1,20 +1,27 @@
 import * as React from 'react';
+import {useAccount} from 'wagmi';
 
 import {styled, useStyletron} from 'baseui';
 import {Block} from 'baseui/block';
+import {Button} from 'baseui/button';
+import {Check} from 'baseui/icon';
 import {Input} from 'baseui/input';
+import {useSnackbar} from 'baseui/snackbar';
 
+import Checkbox from '../../components/Checkbox';
 import Drawer from '../../components/Drawer';
 import H2 from '../../components/H2';
+import H4 from '../../components/H4';
 import H5 from '../../components/H5';
 import ResponsiveImage from '../../components/ResponsiveImage';
-import Text from '../../components/Text';
+import {UserSettingsT} from '../../types';
 
 type Props = {
   displayName: string;
   imageSrc: string;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  settings: UserSettingsT;
 };
 
 const PhotoContainer = styled(Block, ({$theme}) => ({
@@ -26,8 +33,40 @@ const PhotoInner = styled(Block, ({$theme}) => ({
   alignItems: 'center',
 }));
 
-const EditProfile = ({displayName, imageSrc, isOpen, setIsOpen}: Props) => {
+const EditProfile = ({
+  displayName,
+  imageSrc,
+  isOpen,
+  setIsOpen,
+  settings,
+}: Props) => {
   const [_, theme] = useStyletron();
+  const {enqueue} = useSnackbar();
+
+  const [hide0ETHCollections, setHide0ETHCollections] = React.useState(
+    settings?.hide0ETHCollections ? settings.hide0ETHCollections : false,
+  );
+  const account = useAccount();
+
+  const saveSettings = async () => {
+    const address = account.address.toLowerCase();
+    const resp = await fetch(`/api/user/${address}/settings`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        hide0ETHCollections,
+      }),
+    });
+    if (resp.status === 200) {
+      enqueue({
+        message: 'Settings saved',
+        startEnhancer: ({size}) => <Check size={size} />,
+      });
+    }
+  };
+
   return (
     <Drawer
       isOpen={isOpen}
@@ -35,7 +74,7 @@ const EditProfile = ({displayName, imageSrc, isOpen, setIsOpen}: Props) => {
       actions={<H2>Edit Profile</H2>}
     >
       <PhotoContainer>
-        <H5>Photo</H5>
+        <H5>Photo - Coming soon!</H5>
         <PhotoInner>
           <ResponsiveImage src={imageSrc} alt={displayName} />
           <Input
@@ -55,8 +94,22 @@ const EditProfile = ({displayName, imageSrc, isOpen, setIsOpen}: Props) => {
             }}
           />
         </PhotoInner>
-        <Text>Coming Soon!</Text>
       </PhotoContainer>
+      <Block>
+        {/* Checkbox settings */}
+        <H5>Settings</H5>
+        <Checkbox
+          checked={hide0ETHCollections}
+          onChange={() => {
+            setHide0ETHCollections(!hide0ETHCollections);
+          }}
+        >
+          Hide 0ETH collections
+        </Checkbox>
+      </Block>
+      <Block marginTop={theme.sizing.scale800}>
+        <Button onClick={() => saveSettings()}>Save</Button>
+      </Block>
     </Drawer>
   );
 };
