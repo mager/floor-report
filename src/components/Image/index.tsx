@@ -13,7 +13,7 @@ const Image = ({name, size, src}: Props) => {
     <Avatar
       overrides={{
         Avatar: {
-          style: ({$theme}) => ({
+          style: () => ({
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0,
             borderBottomRightRadius: 0,
@@ -21,7 +21,7 @@ const Image = ({name, size, src}: Props) => {
           }),
         },
         Root: {
-          style: ({$theme}) => ({
+          style: () => ({
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0,
             borderBottomRightRadius: 0,

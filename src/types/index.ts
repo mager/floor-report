@@ -27,6 +27,7 @@ export type NFTT = {
   tokenId: string;
   traits: Trait[];
   floor: number;
+  maxFloorAttr: AttributeT;
 };
 
 export type CollectionT = {

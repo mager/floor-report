@@ -7,6 +7,7 @@ module.exports = {
       'storage.opensea.io',
       'storage.googleapis.com',
       'openseauserdata.com',
+      'i.seadn.io'
     ],
   },
   typescript: {

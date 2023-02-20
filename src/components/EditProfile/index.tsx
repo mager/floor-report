@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {useAccount} from 'wagmi';
 
 import {styled, useStyletron} from 'baseui';
@@ -6,12 +6,11 @@ import {Block} from 'baseui/block';
 import {Button} from 'baseui/button';
 import {Check} from 'baseui/icon';
 import {Input} from 'baseui/input';
-import {useSnackbar} from 'baseui/snackbar';
+import {useSnackbar, DURATION} from 'baseui/snackbar';
 
 import Checkbox from '../../components/Checkbox';
 import Drawer from '../../components/Drawer';
 import H2 from '../../components/H2';
-import H4 from '../../components/H4';
 import H5 from '../../components/H5';
 import ResponsiveImage from '../../components/ResponsiveImage';
 import {UserSettingsT} from '../../types';
@@ -42,6 +41,7 @@ const EditProfile = ({
 }: Props) => {
   const [_, theme] = useStyletron();
   const {enqueue} = useSnackbar();
+  const [loading, setLoading] = useState(false);
 
   const [hide0ETHCollections, setHide0ETHCollections] = React.useState(
     settings?.hide0ETHCollections ? settings.hide0ETHCollections : false,
@@ -49,6 +49,7 @@ const EditProfile = ({
   const account = useAccount();
 
   const saveSettings = async () => {
+    setLoading(true);
     const address = account.address.toLowerCase();
     const resp = await fetch(`/api/user/${address}/settings`, {
       method: 'POST',
@@ -60,11 +61,15 @@ const EditProfile = ({
       }),
     });
     if (resp.status === 200) {
-      enqueue({
-        message: 'Settings saved',
-        startEnhancer: ({size}) => <Check size={size} />,
-      });
+      enqueue(
+        {
+          message: 'Settings saved',
+          startEnhancer: ({size}) => <Check size={size} />,
+        },
+        DURATION.short,
+      );
     }
+    setLoading(false);
   };
 
   return (
@@ -108,7 +113,9 @@ const EditProfile = ({
         </Checkbox>
       </Block>
       <Block marginTop={theme.sizing.scale800}>
-        <Button onClick={() => saveSettings()}>Save</Button>
+        <Button onClick={() => saveSettings()} isLoading={loading}>
+          Save
+        </Button>
       </Block>
     </Drawer>
   );

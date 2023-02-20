@@ -41,6 +41,13 @@ const Home = ({home, success}: Props) => {
       >
         NFT floor prices & analytics
       </Text>
+      <div>
+        <em>
+          <a href="" target="_blank" rel="noreferrer">
+            Try the beta site...
+          </a>
+        </em>
+      </div>
       <Stats stats={stats} />
       <RandomNFT nft={randomNFT} />
     </Container>

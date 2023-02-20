@@ -4,7 +4,6 @@ import {ConnectButton as RainbowButton} from '@rainbow-me/rainbowkit';
 import {styled} from 'baseui';
 import {Block} from 'baseui/block';
 import {Button} from 'baseui/button';
-import {StyledLink} from 'baseui/link';
 
 type Props = {
   label: string;
@@ -22,14 +21,7 @@ const ConnectButtonContainer = styled(Block, ({$theme}) => ({
 const ConnectButton = ({label}: Props) => {
   return (
     <RainbowButton.Custom>
-      {({
-        account,
-        chain,
-        openAccountModal,
-        openChainModal,
-        openConnectModal,
-        mounted,
-      }) => {
+      {({account, chain, openAccountModal, openConnectModal, mounted}) => {
         return (
           <Block
             {...(!mounted && {
